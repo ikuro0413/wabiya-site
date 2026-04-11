@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>焼肉 和火焼 わびや | 清澄白河の隠れ家焼肉</title>
+  <meta name="description" content="清澄白河・菊川の個室焼肉。厳選黒毛和牛と名物・厚切り牛タンをリーズナブルに。ランチ定食、テイクアウト弁当も充実。無煙ロースターでお子様連れも安心。">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            wabi: { black: '#1a1a1a', red: '#c41e3a', gold: '#c5a55a', text: '#f5f5f5', subtle: '#888888' }
+          },
+          fontFamily: {
+            serif: ['Noto Serif JP', 'serif'],
+            sans: ['Noto Sans JP', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: #1a1a1a; color: #f5f5f5; }
+    .font-serif { font-family: 'Noto Serif JP', serif; }
+    .hero-overlay { background: linear-gradient(to bottom, rgba(26,26,26,0.3), rgba(26,26,26,0.8)); }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s, transform 0.8s; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .gold-line { width: 60px; height: 2px; background: #c5a55a; }
+    /* Fixed reservation CTA - hidden until scroll past hero */
+    .fixed-cta { position: fixed; right: 0; top: 50%; transform: translateY(-50%); z-index: 50; writing-mode: vertical-rl; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
+    .fixed-cta.show { opacity: 1; pointer-events: auto; }
+    @media (max-width: 768px) { .fixed-cta { top: auto; bottom: 0; transform: none; writing-mode: horizontal-tb; width: 100%; right: 0; } }
+  </style>
+</head>
+<body>
+
+<!-- Fixed Reservation CTA (like niku-danro.com) -->
+<a href="#reservation" class="fixed-cta bg-wabi-red text-white px-3 py-6 md:py-8 text-sm font-bold tracking-widest hover:bg-red-700 transition text-center no-underline">
+  <span class="md:hidden">ご予約はこちら - 080-6576-5278</span>
+  <span class="hidden md:inline">ご 予 約 は こ ち ら</span>
+</a>
+
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full z-40 bg-wabi-black/90 backdrop-blur-sm border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="#" class="font-serif text-xl md:text-2xl text-wabi-gold tracking-widest">焼肉 和火焼 わびや</a>
+    <div class="hidden md:flex items-center gap-8">
+      <nav class="flex gap-6 text-sm tracking-wider">
+        <a href="#about" class="hover:text-wabi-gold transition">わびやについて</a>
+        <a href="#lunch" class="hover:text-wabi-gold transition">ランチ</a>
+        <a href="#menu" class="hover:text-wabi-gold transition">メニュー</a>
+        <a href="#access" class="hover:text-wabi-gold transition">アクセス</a>
+        <a href="#reservation" class="hover:text-wabi-gold transition">ご予約</a>
+      </nav>
+      <a href="tel:08065765278" class="text-wabi-gold text-sm font-bold">080-6576-5278</a>
+    </div>
+    <button id="menuBtn" class="md:hidden text-wabi-gold text-2xl">&#9776;</button>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div id="mobileMenu" class="fixed inset-0 bg-wabi-black/95 z-50 hidden flex-col items-center justify-center gap-8">
+  <button id="closeMenu" class="absolute top-4 right-4 text-3xl text-wabi-gold">&times;</button>
+  <a href="#about" class="text-xl font-serif text-wabi-gold tracking-widest menu-link">わびやについて</a>
+  <a href="#lunch" class="text-xl font-serif text-wabi-gold tracking-widest menu-link">ランチ</a>
+  <a href="#menu" class="text-xl font-serif text-wabi-gold tracking-widest menu-link">メニュー</a>
+  <a href="#access" class="text-xl font-serif text-wabi-gold tracking-widest menu-link">アクセス</a>
+  <a href="#reservation" class="text-xl font-serif text-wabi-gold tracking-widest menu-link">ご予約</a>
+  <a href="tel:08065765278" class="mt-4 text-wabi-red text-lg font-bold">080-6576-5278</a>
+</div>
+
+<!-- Hero -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 bg-[url('images/gyutan-13.png')] bg-cover bg-center"></div>
+  <div class="hero-overlay absolute inset-0"></div>
+  <div class="relative text-center px-4">
+    <p class="text-wabi-gold text-sm md:text-base tracking-[0.3em] mb-4 font-sans">YAKINIKU WABIYA</p>
+    <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-wider leading-tight">
+      清澄白河の<br class="md:hidden">隠れ家焼肉
+    </h1>
+    <div class="gold-line mx-auto mb-6"></div>
+    <p class="text-wabi-subtle text-sm md:text-base tracking-wider">厳選和牛と名物・厚切り牛タン</p>
+  </div>
+</section>
+
+<!-- News / Campaign -->
+<section id="news" class="py-16 md:py-24 px-4">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-12 fade-in">
+      <p class="text-wabi-gold text-xs tracking-[0.3em] mb-3">NEWS</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">お知らせ</h2>
+      <div class="gold-line mx-auto"></div>
+    </div>
+
+    <!-- Campaign Banner -->
+    <div class="fade-in mb-8">
+      <div class="border border-wabi-red/60 bg-wabi-red/10 rounded-sm p-6 md:p-8 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 bg-wabi-red text-white text-xs px-4 py-1 font-bold tracking-wider">CAMPAIGN</div>
+        <p class="text-wabi-gold text-sm mb-2 mt-2">2026.4.29（火・祝）限定</p>
+        <h3 class="font-serif text-2xl md:text-3xl text-wabi-text mb-3">
+          肉の日 <span class="text-wabi-red font-bold">29%OFF</span>
+        </h3>
+        <p class="text-wabi-subtle text-sm leading-relaxed">4月29日は「肉の日」。焼肉メニュー全品29%OFFでご提供。<br class="hidden md:inline">ご予約はお早めに。</p>
+        <a href="tel:08065765278" class="inline-block mt-4 border border-wabi-gold text-wabi-gold hover:bg-wabi-gold/10 px-6 py-2 text-sm tracking-widest transition">予約する 080-6576-5278</a>
+      </div>
+    </div>
+
+    <!-- News List -->
+    <div class="space-y-4 fade-in">
+      <div class="flex items-start gap-4 border-b border-white/10 pb-4">
+        <span class="text-wabi-gold text-xs whitespace-nowrap mt-1">2026.04.29</span>
+        <span class="bg-wabi-red text-white text-[10px] px-2 py-0.5 whitespace-nowrap mt-0.5">キャンペーン</span>
+        <p class="text-sm">肉の日 焼肉メニュー全品29%OFF</p>
+      </div>
+      <div class="flex items-start gap-4 border-b border-white/10 pb-4">
+        <span class="text-wabi-gold text-xs whitespace-nowrap mt-1">2026.04.01</span>
+        <span class="bg-wabi-gold/20 text-wabi-gold text-[10px] px-2 py-0.5 whitespace-nowrap mt-0.5">お知らせ</span>
+        <p class="text-sm">Uber Eatsでのデリバリー開始しました</p>
+      </div>
+      <div class="flex items-start gap-4 border-b border-white/10 pb-4">
+        <span class="text-wabi-gold text-xs whitespace-nowrap mt-1">2026.03.15</span>
+        <span class="bg-wabi-gold/20 text-wabi-gold text-[10px] px-2 py-0.5 whitespace-nowrap mt-0.5">お知らせ</span>
+        <p class="text-sm">テイクアウトメニューをリニューアルしました</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="py-20 md:py-32 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+      <p class="text-wabi-gold text-xs tracking-[0.3em] mb-3">ABOUT WABIYA</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">わびやについて</h2>
+      <div class="gold-line mx-auto"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+      <div class="text-center fade-in">
+        <div class="text-wabi-gold text-4xl mb-4">&#9670;</div>
+        <h3 class="font-serif text-lg mb-3 text-wabi-gold">名物 厚切り牛タン</h3>
+        <p class="text-wabi-subtle text-sm leading-relaxed">分厚くカットした極上の牛タン。炭火でじっくり焼き上げる、わびや自慢の看板メニュー。</p>
+      </div>
+      <div class="text-center fade-in">
+        <div class="text-wabi-gold text-4xl mb-4">&#9670;</div>
+        <h3 class="font-serif text-lg mb-3 text-wabi-gold">個室あり</h3>
+        <p class="text-wabi-subtle text-sm leading-relaxed">デートや家族の食事に最適な個室を完備。無煙ロースターで煙や匂いを気にせずお楽しみいただけます。</p>
+      </div>
+      <div class="text-center fade-in">
+        <div class="text-wabi-gold text-4xl mb-4">&#9670;</div>
+        <h3 class="font-serif text-lg mb-3 text-wabi-gold">厳選黒毛和牛</h3>
+        <p class="text-wabi-subtle text-sm leading-relaxed">A4・A5ランクの黒毛和牛をリーズナブルな価格で。本物の和牛の旨味をお手頃にご提供します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu - Full Category -->
+<section id="menu" class="py-20 md:py-32 px-4 bg-black/30">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12 fade-in">
+      <p class="text-wabi-gold text-xs tracking-[0.3em] mb-3">MENU</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">お品書き</h2>
+      <div class="gold-line mx-auto"></div>
+    </div>
+
+    <!-- Category tabs -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10 fade-in">
+      <button class="cat-tab active px-4 py-2 text-xs border border-wabi-gold text-wabi-gold bg-wabi-gold/10 tracking-wider" data-cat="signature">名物</button>
+      <button class="cat-tab px-4 py-2 text-xs border border-white/20 text-wabi-subtle hover:border-wabi-gold hover:text-wabi-gold transition" data-cat="wagyu">黒毛和牛</button>
+      <button class="cat-tab px-4 py-2 text-xs border border-white/20 text-wabi-subtle hover:border-wabi-gold hover:text-wabi-gold transition" data-cat="harami">ハラミ・カルビ</button>
+      <button class="cat-tab px-4 py-2 text-xs border border-white/20 text-wabi-subtle hover:border-wabi-gold hover:text-wabi-gold transition" data-cat="tongue">牛タン</button>
+      <button class="cat-tab px-4 py-2 text-xs border border-white/20 text-wabi-subtle hover:border-wabi-gold hover:text-wabi-gold transition" data-cat="horumon">ホルモン</button>
+      <button class="cat-tab px-4 py-2 text-xs border border-white/20 text-wabi-subtle hover:border-wabi-gold hover:text-wabi-gold transition" data-cat="side">逸品・サイド</button>
+      <button class="cat-tab px-4 py-2 text-xs border border-white/20 text-wabi-subtle hover:border-wabi-gold hover:text-wabi-gold transition" data-cat="drink">ドリンク</button>
+    </div>
+
+    <!-- 名物 -->
+    <div id="cat-signature" class="cat-content space-y-3 fade-in">
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <h4 class="font-serif text-base">【別格】厚切り牛タン ネギ塩+カットレモン付 <span class="text-wabi-red text-xs">看板・数量限定</span></h4>
+          <p class="text-wabi-subtle text-xs mt-1">わびや自慢の極厚カット。ネギ塩とカットレモンで味わう至高の一品</p>
+        </div>
+        <span class="text-wabi-gold text-sm whitespace-nowrap ml-4">¥1,980</span>
+      </div>
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <h4 class="font-serif text-base">【名物】牛タンネギ塩包み カットレモン付</h4>
+          <p class="text-wabi-subtle text-xs mt-1">たっぷりのネギ塩を牛タンで包んだ名物メニュー</p>
+        </div>
+        <span class="text-wabi-gold text-sm whitespace-nowrap ml-4">¥1,480</span>
+      </div>
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <h4 class="font-serif text-base">【別格】厚切り牛タン+ネギ塩包みセット</h4>
+          <p class="text-wabi-subtle text-xs mt-1">看板2品をまとめてお得に</p>
+        </div>
+        <span class="text-wabi-gold text-sm whitespace-nowrap ml-4">¥2,680</span>
+      </div>
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <h4 class="font-serif text-base">【名物】構想3年黄金たれ黒毛和牛カルビ</h4>
+          <p class="text-wabi-subtle text-xs mt-1">3年かけて完成させた秘伝の黄金タレで味わう黒毛和牛</p>
+        </div>
+        <span class="text-wabi-gold text-sm whitespace-nowrap ml-4">¥1,580</span>
+      </div>
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <h4 class="font-serif text-base">【家快】特製ダレ壺サガリ一本漬け</h4>
+          <p class="text-wabi-subtle text-xs mt-1">秘伝のタレに一本丸ごと漬け込んだ贅沢な一品</p>
+        </div>
+        <span class="text-wabi-gold text-sm whitespace-nowrap ml-4">¥1,360</span>
+      </div>
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <h4 class="font-serif text-base">極上黒毛和牛 とろける焼きスキ</h4>
+          <p class="text-wabi-subtle text-xs mt-1">口の中でとろける極上の黒毛和牛をすき焼き風に</p>
+        </div>
+        <span class="text-wabi-gold text-sm whitespace-nowrap ml-4">¥1,780</span>
+      </div>
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <h4 class="font-serif text-base">【名物】マシマシネギ塩牛タン</h4>
+          <p class="text-wabi-subtle text-xs mt-1">たっぷりのネギ塩で味わう贅沢な牛タン</p>
+        </div>
+        <span class="text-wabi-gold text-sm whitespace-nowrap ml-4">¥1,620</span>
+      </div>
+    </div>
+
+    <!-- 黒毛和牛 -->
+    <div id="cat-wagyu" class="cat-content hidden space-y-3 fade-in">
+      <p class="text-wabi-gold font-serif text-lg mb-4">厳選黒毛和牛カルビ・ロース</p>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">黒毛和牛上カルビ</h4></div><span class="text-wabi-gold text-sm ml-4">¥1,580</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">黒毛和牛特上カルビ</h4></div><span class="text-wabi-gold text-sm ml-4">¥1,980</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">黒毛和牛上ロース</h4></div><span class="text-wabi-gold text-sm ml-4">¥1,680</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">黒毛和牛特上ロース</h4></div><span class="text-wabi-gold text-sm ml-4">¥2,180</span></div>
+      <p class="text-wabi-subtle text-xs mt-4">※仕入れ状況により内容が変わる場合がございます</p>
+    </div>
+
+    <!-- ハラミ・カルビ -->
+    <div id="cat-harami" class="cat-content hidden space-y-3 fade-in">
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">うまだれハラミ</h4><p class="text-wabi-subtle text-xs mt-1">特製ダレで漬け込んだ人気No.1メニュー</p></div><span class="text-wabi-gold text-sm ml-4">¥1,280</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">ネギ塩ハラミ</h4></div><span class="text-wabi-gold text-sm ml-4">¥1,280</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">味噌ハラミ</h4></div><span class="text-wabi-gold text-sm ml-4">¥1,280</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">カルビ</h4></div><span class="text-wabi-gold text-sm ml-4">¥980</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">ネギ塩カルビ</h4></div><span class="text-wabi-gold text-sm ml-4">¥980</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">味噌カルビ</h4></div><span class="text-wabi-gold text-sm ml-4">¥980</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">豚カルビ</h4></div><span class="text-wabi-gold text-sm ml-4">¥680</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">鶏もも</h4></div><span class="text-wabi-gold text-sm ml-4">¥580</span></div>
+    </div>
+
+    <!-- 牛タン -->
+    <div id="cat-tongue" class="cat-content hidden space-y-3 fade-in">
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">牛タン塩</h4></div><span class="text-wabi-gold text-sm ml-4">¥1,280</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">ネギ塩牛タン</h4></div><span class="text-wabi-gold text-sm ml-4">¥1,380</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">厚切り牛タン</h4><p class="text-wabi-subtle text-xs mt-1">看板メニュー。分厚くカットした極上の牛タン</p></div><span class="text-wabi-gold text-sm ml-4">¥1,980</span></div>
+    </div>
+
+    <!-- ホルモン -->
+    <div id="cat-horumon" class="cat-content hidden space-y-3 fade-in">
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">上ミノ</h4></div><span class="text-wabi-gold text-sm ml-4">¥780</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">丸腸</h4></div><span class="text-wabi-gold text-sm ml-4">¥680</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">ホルモンMIX</h4></div><span class="text-wabi-gold text-sm ml-4">¥780</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">レバー</h4></div><span class="text-wabi-gold text-sm ml-4">¥580</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">ハツ</h4></div><span class="text-wabi-gold text-sm ml-4">¥580</span></div>
+    </div>
+
+    <!-- 逸品・サイド -->
+    <div id="cat-side" class="cat-content hidden space-y-3 fade-in">
+      <p class="text-wabi-gold font-serif text-sm mb-2">キムチ・ナムル</p>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">白菜キムチ</h4></div><span class="text-wabi-gold text-sm ml-4">¥380</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">ナムル盛り合わせ</h4></div><span class="text-wabi-gold text-sm ml-4">¥480</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">チョレギサラダ</h4></div><span class="text-wabi-gold text-sm ml-4">¥580</span></div>
+      <p class="text-wabi-gold font-serif text-sm mb-2 mt-6">ご飯・スープ</p>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">白ごはん</h4></div><span class="text-wabi-gold text-sm ml-4">¥250</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">石焼ビビンバ</h4></div><span class="text-wabi-gold text-sm ml-4">¥880</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">冷麺</h4></div><span class="text-wabi-gold text-sm ml-4">¥780</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">わかめスープ</h4></div><span class="text-wabi-gold text-sm ml-4">¥380</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">テールスープ</h4></div><span class="text-wabi-gold text-sm ml-4">¥580</span></div>
+      <p class="text-wabi-gold font-serif text-sm mb-2 mt-6">デザート</p>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">バニラアイス</h4></div><span class="text-wabi-gold text-sm ml-4">¥280</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">シャーベット</h4></div><span class="text-wabi-gold text-sm ml-4">¥280</span></div>
+    </div>
+
+    <!-- ドリンク -->
+    <div id="cat-drink" class="cat-content hidden space-y-3 fade-in">
+      <p class="text-wabi-gold font-serif text-sm mb-2">ビール</p>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">生ビール（中）</h4></div><span class="text-wabi-gold text-sm ml-4">¥580</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">瓶ビール</h4></div><span class="text-wabi-gold text-sm ml-4">¥680</span></div>
+      <p class="text-wabi-gold font-serif text-sm mb-2 mt-6">ハイボール・サワー</p>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">ハイボール</h4></div><span class="text-wabi-gold text-sm ml-4">¥480</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">レモンサワー</h4></div><span class="text-wabi-gold text-sm ml-4">¥480</span></div>
+      <p class="text-wabi-gold font-serif text-sm mb-2 mt-6">焼酎・日本酒・ワイン</p>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">焼酎各種</h4></div><span class="text-wabi-gold text-sm ml-4">¥480〜</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">日本酒各種</h4></div><span class="text-wabi-gold text-sm ml-4">¥580〜</span></div>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">グラスワイン</h4></div><span class="text-wabi-gold text-sm ml-4">¥580</span></div>
+      <p class="text-wabi-gold font-serif text-sm mb-2 mt-6">ソフトドリンク</p>
+      <div class="flex justify-between border-b border-white/10 pb-3"><div><h4 class="font-serif text-base">ウーロン茶 / コーラ / ジンジャーエール 他</h4></div><span class="text-wabi-gold text-sm ml-4">¥280〜</span></div>
+    </div>
+
+    <p class="text-center text-wabi-subtle text-xs mt-10 fade-in">※価格は全て税込です。仕入れ状況により内容・価格が変わる場合がございます。</p>
+  </div>
+</section>
+
+<!-- Lunch -->
+<section id="lunch" class="py-20 md:py-32 px-4 bg-black/30">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+      <p class="text-wabi-gold text-xs tracking-[0.3em] mb-3">LUNCH</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">ランチ</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="text-wabi-subtle text-sm">11:30〜13:30</p>
+    </div>
+    <!-- カレー推し -->
+    <div class="mb-12 fade-in">
+      <div class="border border-wabi-gold/30 rounded-sm overflow-hidden md:flex">
+        <div class="md:w-1/2 aspect-[16/10] md:aspect-auto bg-[url('images/curry.jpg')] bg-cover bg-center min-h-[250px]"></div>
+        <div class="md:w-1/2 p-8 flex flex-col justify-center">
+          <span class="text-wabi-red text-xs font-bold tracking-widest mb-2">LUNCH RECOMMEND</span>
+          <h3 class="font-serif text-2xl text-wabi-gold mb-3">和牛すじカレー</h3>
+          <p class="text-wabi-subtle text-sm leading-relaxed mb-4">じっくり煮込んだ和牛すじ肉がゴロゴロ入った、わびや特製カレー。焼肉屋ならではの贅沢な味わい。</p>
+          <span class="text-wabi-gold font-bold text-xl">¥900</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8 fade-in">
+      <div class="border border-white/10 rounded-sm overflow-hidden">
+        <div class="aspect-[16/10] bg-[url('images/gyutan-12.png')] bg-cover bg-center"></div>
+        <div class="p-6">
+          <h3 class="font-serif text-lg text-wabi-gold mb-2">ジューシーハラミランチ定食</h3>
+          <p class="text-wabi-subtle text-sm mb-3">自慢のうまだれハラミをたっぷり。ご飯・サラダ・スープ付き</p>
+          <span class="text-wabi-gold font-bold">¥1,100</span>
+        </div>
+      </div>
+      <div class="border border-white/10 rounded-sm overflow-hidden">
+        <div class="aspect-[16/10] bg-[url('images/gyutan-10.png')] bg-cover bg-center"></div>
+        <div class="p-6">
+          <h3 class="font-serif text-lg text-wabi-gold mb-2">厚切り牛タンランチ定食</h3>
+          <p class="text-wabi-subtle text-sm mb-3">名物の厚切り牛タンをランチでもお楽しみいただけます</p>
+          <span class="text-wabi-gold font-bold">¥1,500</span>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-wabi-subtle text-xs mt-8 fade-in">※ランチメニューは日によって内容が変わる場合がございます</p>
+  </div>
+</section>
+
+<!-- Takeout Bento -->
+<section id="takeout" class="py-20 md:py-32 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+      <p class="text-wabi-gold text-xs tracking-[0.3em] mb-3">TAKEOUT</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">テイクアウト弁当</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="text-wabi-subtle text-sm">お電話でご注文ください</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 fade-in">
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-karubi.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">カルビ弁当</h4>
+        <span class="text-wabi-gold text-sm">¥980</span>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-harami.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">ハラミ弁当</h4>
+        <span class="text-wabi-gold text-sm">¥1,080</span>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-buta-karubi.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">豚カルビ弁当</h4>
+        <span class="text-wabi-gold text-sm">¥880</span>
+      </div>
+    </div>
+
+    <!-- More bento items (hidden by default) -->
+    <div id="bentoMore" class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-6 hidden fade-in">
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-miso-karubi.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">味噌カルビ弁当</h4>
+        <span class="text-wabi-gold text-sm">¥980</span>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-harami-negishio.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">ハラミネギ塩弁当</h4>
+        <span class="text-wabi-gold text-sm">¥1,080</span>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-harami-miso.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">ハラミ味噌弁当</h4>
+        <span class="text-wabi-gold text-sm">¥1,080</span>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-negishio-karubi.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">ネギ塩カルビ弁当</h4>
+        <span class="text-wabi-gold text-sm">¥980</span>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-wagyu-karubi.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">黒毛和牛カルビ弁当</h4>
+        <span class="text-wabi-gold text-sm">¥1,380</span>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-negishio-wagyu.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">ネギ塩黒毛和牛弁当</h4>
+        <span class="text-wabi-gold text-sm">¥1,380</span>
+      </div>
+      <div class="text-center">
+        <div class="aspect-square bg-[url('images/bento-buta-negishio.png')] bg-cover bg-center rounded-sm mb-3"></div>
+        <h4 class="font-serif text-sm mb-1">豚カルビネギ塩弁当</h4>
+        <span class="text-wabi-gold text-sm">¥880</span>
+      </div>
+    </div>
+
+    <div class="text-center mt-8 fade-in">
+      <button id="bentoToggle" onclick="document.getElementById('bentoMore').classList.toggle('hidden'); this.textContent = this.textContent === 'もっと見る' ? '閉じる' : 'もっと見る';" class="border border-wabi-gold text-wabi-gold hover:bg-wabi-gold/10 px-8 py-3 text-sm tracking-widest transition cursor-pointer">もっと見る</button>
+    </div>
+    <div class="text-center mt-10 fade-in">
+      <p class="text-wabi-subtle text-sm mb-3">ご注文・お問い合わせ</p>
+      <a href="tel:08065765278" class="text-2xl font-bold text-wabi-text hover:text-wabi-gold transition">080-6576-5278</a>
+      <p class="text-wabi-subtle text-xs mt-3">Uber Eatsでもご注文いただけます</p>
+    </div>
+  </div>
+</section>
+
+<!-- Access -->
+<section id="access" class="py-20 md:py-32 px-4">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16 fade-in">
+      <p class="text-wabi-gold text-xs tracking-[0.3em] mb-3">ACCESS</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">店舗情報</h2>
+      <div class="gold-line mx-auto"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 fade-in">
+      <div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.2!2d139.8034!3d35.6804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188956c7d7c88d%3A0x5c0e6e4e1b1b1b1b!2z5p2x5Lqs6YO95rGf5p2x5Yy655m95rKzMy05LTE2!5e0!3m2!1sja!2sjp!4v1" width="100%" height="350" style="border:0; border-radius:4px; filter: grayscale(0.8) contrast(1.1);" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-wabi-gold font-serif text-lg mb-2">焼肉 和火焼 わびや</h3>
+          <p class="text-wabi-subtle text-sm">〒135-0021 東京都江東区白河3丁目9-16</p>
+        </div>
+        <div>
+          <h4 class="text-wabi-gold text-sm mb-1">最寄り駅</h4>
+          <p class="text-wabi-subtle text-sm">菊川駅 B2出口 徒歩5分</p>
+          <p class="text-wabi-subtle text-sm">清澄白河駅 徒歩7分</p>
+        </div>
+        <div>
+          <h4 class="text-wabi-gold text-sm mb-1">営業時間</h4>
+          <p class="text-wabi-subtle text-sm">ランチ 11:30〜13:30</p>
+          <p class="text-wabi-subtle text-sm">ディナー（平日）18:00〜22:00 L.O.21:30</p>
+          <p class="text-wabi-subtle text-sm">ディナー（土日祝）17:00〜22:00 L.O.21:30</p>
+        </div>
+        <div>
+          <h4 class="text-wabi-gold text-sm mb-1">お電話</h4>
+          <a href="tel:08065765278" class="text-2xl font-bold text-wabi-text hover:text-wabi-gold transition">080-6576-5278</a>
+        </div>
+        <div>
+          <h4 class="text-wabi-gold text-sm mb-1">設備</h4>
+          <p class="text-wabi-subtle text-sm">個室あり / 無煙ロースター / テイクアウト対応 / Uber Eats</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Reservation -->
+<section id="reservation" class="py-20 md:py-32 px-4 bg-black/30">
+  <div class="max-w-3xl mx-auto text-center">
+    <div class="mb-16 fade-in">
+      <p class="text-wabi-gold text-xs tracking-[0.3em] mb-3">RESERVATION</p>
+      <h2 class="font-serif text-3xl md:text-4xl mb-4">ご予約</h2>
+      <div class="gold-line mx-auto"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 fade-in">
+      <div class="border border-wabi-gold/30 p-8 rounded-sm">
+        <h3 class="font-serif text-lg text-wabi-gold mb-4">お電話でのご予約</h3>
+        <a href="tel:08065765278" class="text-3xl font-bold hover:text-wabi-gold transition block mb-2">080-6576-5278</a>
+        <p class="text-wabi-subtle text-xs">営業時間内にお電話ください</p>
+      </div>
+      <div class="border border-wabi-gold/30 p-8 rounded-sm">
+        <h3 class="font-serif text-lg text-wabi-gold mb-4">WEB予約</h3>
+        <a href="https://tabelog.com/tokyo/A1313/A131303/13318241/" target="_blank" class="inline-block bg-wabi-red hover:bg-red-700 text-white px-8 py-3 text-sm tracking-widest transition mb-2">食べログで予約</a>
+        <p class="text-wabi-subtle text-xs">24時間受付中</p>
+      </div>
+    </div>
+    <div class="mt-12 fade-in">
+      <p class="text-wabi-subtle text-sm mb-4">公式SNS・LINE</p>
+      <div class="flex justify-center gap-6">
+        <a href="https://www.instagram.com/wabiya.yakinikuyasan/" target="_blank" class="text-wabi-gold hover:text-wabi-red transition text-sm">Instagram</a>
+        <a href="#" class="text-wabi-gold hover:text-wabi-red transition text-sm">TikTok</a>
+        <a href="#" class="text-wabi-gold hover:text-wabi-red transition text-sm">LINE</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 px-4 border-t border-white/10">
+  <div class="max-w-5xl mx-auto text-center">
+    <p class="font-serif text-wabi-gold text-lg mb-2">焼肉 和火焼 わびや</p>
+    <p class="text-wabi-subtle text-xs mb-1">東京都江東区白河3-9-16</p>
+    <p class="text-wabi-subtle text-xs mb-4">080-6576-5278</p>
+    <p class="text-wabi-subtle text-[10px]">&copy; 2026 Yakiniku Wabiya. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+document.getElementById('menuBtn').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.remove('hidden');
+  document.getElementById('mobileMenu').classList.add('flex');
+});
+document.getElementById('closeMenu').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('hidden');
+  document.getElementById('mobileMenu').classList.remove('flex');
+});
+document.querySelectorAll('.menu-link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.add('hidden');
+    document.getElementById('mobileMenu').classList.remove('flex');
+  });
+});
+
+// Category tabs (menu)
+document.querySelectorAll('.cat-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.cat-tab').forEach(t => {
+      t.classList.remove('active', 'bg-wabi-gold/10', 'text-wabi-gold', 'border-wabi-gold');
+      t.classList.add('border-white/20', 'text-wabi-subtle');
+    });
+    tab.classList.add('active', 'bg-wabi-gold/10', 'text-wabi-gold', 'border-wabi-gold');
+    tab.classList.remove('border-white/20', 'text-wabi-subtle');
+    document.querySelectorAll('.cat-content').forEach(c => c.classList.add('hidden'));
+    document.getElementById('cat-' + tab.dataset.cat).classList.remove('hidden');
+  });
+});
+
+// Show fixed CTA after scrolling past hero
+const fixedCta = document.querySelector('.fixed-cta');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > window.innerHeight * 0.8) {
+    fixedCta.classList.add('show');
+  } else {
+    fixedCta.classList.remove('show');
+  }
+});
+
+// Fade in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

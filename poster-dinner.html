@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや ディナー看板ポスター</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .poster {
+      width: 594px;
+      height: 841px;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Zen Old Mincho', serif;
+      color: #fff;
+    }
+
+    .bg-photo {
+      position: absolute;
+      inset: 0;
+      background: url('images/gyutan-13.png') center center / cover no-repeat;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.02) 20%,
+        rgba(0,0,0,0.15) 50%,
+        rgba(0,0,0,0.68) 78%,
+        rgba(0,0,0,0.93) 100%
+      );
+    }
+
+    .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0 44px 34px;
+    }
+
+    /* エリア名: Cormorant Garamond風の字間広め英語ラベル */
+    .area-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.5em;
+      color: #c5a55a;
+      margin-bottom: 5px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    /* 「焼肉」: 超大きな明朝体 (サイズ比率 7) */
+    .category {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 82px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      text-shadow: 0 3px 30px rgba(0,0,0,0.6);
+    }
+
+    .divider {
+      width: 44px;
+      height: 1px;
+      background: #c5a55a;
+      opacity: 0.7;
+      margin-bottom: 12px;
+    }
+
+    /* メニュー名: 中サイズ (サイズ比率 3) */
+    .menu-name {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: 0.02em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    .menu-tag {
+      display: inline-block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 8px;
+      color: #c41e3a;
+      border: 1px solid rgba(196,30,58,0.7);
+      padding: 2px 7px;
+      margin-left: 8px;
+      letter-spacing: 0.12em;
+      vertical-align: middle;
+      font-weight: 400;
+    }
+
+    /* 価格: Cormorant Garamond (サイズ比率 4.5) */
+    .price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 50px;
+      font-weight: 600;
+      color: #c5a55a;
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+
+    /* 特徴: 小サイズ (サイズ比率 1) */
+    .features {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.15em;
+      margin-bottom: 14px;
+      font-weight: 300;
+    }
+
+    .shop-name {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 14px;
+      color: #c5a55a;
+      letter-spacing: 0.35em;
+      opacity: 0.85;
+    }
+
+    .arrow {
+      position: absolute;
+      bottom: 34px;
+      right: 44px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.12em;
+      font-weight: 300;
+    }
+
+    @media print {
+      .poster { width: 594mm; height: 841mm; }
+      .category { font-size: 160px; }
+      .menu-name { font-size: 72px; }
+      .price { font-size: 120px; }
+      .content { padding: 100px 100px 70px; }
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="bg-photo"></div>
+  <div class="overlay"></div>
+
+  <div class="content">
+    <div class="area-label">清 澄 白 河</div>
+    <div class="category">焼肉</div>
+    <div class="divider"></div>
+    <div class="menu-name">名物 厚切り牛タン<span class="menu-tag">数量限定</span></div>
+    <div class="price">¥1,980</div>
+    <div class="features">個室あり ｜ 無煙ロースター ｜ ランチ営業中</div>
+    <div class="shop-name">焼肉 和火焼 わびや</div>
+  </div>
+
+  <div class="arrow">→ この先すぐ</div>
+</div>
+
+</body>
+</html>

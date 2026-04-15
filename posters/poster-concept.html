@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや コンセプトポスター A4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* A4: 210mm x 297mm = 595 x 842px @72dpi */
+    .poster {
+      width: 595px;
+      height: 842px;
+      position: relative;
+      overflow: hidden;
+      background: #0a0a0a;
+      font-family: 'Zen Old Mincho', serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bg-photo {
+      position: absolute;
+      inset: 0;
+      background: url('../images/gyutan-13.png') center center / cover no-repeat;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(10,8,6,0.65) 0%, transparent 70%),
+        linear-gradient(to bottom,
+          rgba(10,10,10,0.55) 0%,
+          rgba(10,10,10,0.35) 20%,
+          rgba(10,10,10,0.3) 40%,
+          rgba(10,10,10,0.5) 60%,
+          rgba(10,10,10,0.75) 80%,
+          rgba(10,10,10,0.9) 100%
+        );
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 上部ゴールドライン */
+    .line-top {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, #c5a55a);
+      margin-bottom: 48px;
+    }
+
+    /* 英字ラベル */
+    .en-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.7em;
+      color: #c5a55a;
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    /* メイン: 和火焼 */
+    .main-title {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 72px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.5);
+    }
+
+    /* ゴールドディバイダー */
+    .divider {
+      width: 44px;
+      height: 1px;
+      background: #c5a55a;
+      margin-bottom: 20px;
+    }
+
+    /* サブ: わびや */
+    .sub-title {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: 0.5em;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 48px;
+      text-shadow: 0 1px 20px rgba(0,0,0,0.4);
+    }
+
+    /* 下部ゴールドライン */
+    .line-bottom {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to top, transparent, #c5a55a);
+    }
+
+    @media print {
+      body { margin: 0; }
+      .poster { width: 210mm; height: 297mm; }
+      .main-title { font-size: 200px; }
+      .sub-title { font-size: 90px; }
+      .en-label { font-size: 36px; }
+      .line-top, .line-bottom { height: 200px; }
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #222;
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="bg-photo"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="line-top"></div>
+    <div class="en-label">Yakiniku Wabiya</div>
+    <div class="main-title">和火焼</div>
+    <div class="divider"></div>
+    <div class="sub-title">わびや</div>
+    <div class="line-bottom"></div>
+  </div>
+</div>
+
+</body>
+</html>

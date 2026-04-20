@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>わびや 焼肉メニュー A4印刷用</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --card: #161616;
+    --gold: #c5a55a;
+    --gold-light: rgba(197,165,90,0.35);
+    --gold-dim: rgba(197,165,90,0.15);
+    --text: #e8e4dc;
+    --text-sub: rgba(232,228,220,0.55);
+    --text-dim: rgba(232,228,220,0.35);
+    --border: rgba(197,165,90,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  body {
+    background: #1a1a1a;
+    color: var(--text);
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    background: var(--bg);
+    margin: 20px auto;
+    padding: 53px 60px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  }
+
+  .page:last-child { page-break-after: auto; }
+
+  /* ===== PAGE 1: COVER ===== */
+  .cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 20mm;
+    left: 20mm;
+    right: 20mm;
+    bottom: 20mm;
+    border: 1px solid var(--border);
+  }
+
+  .cover-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.6em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .cover-title {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 400;
+    font-size: 52px;
+    letter-spacing: 0.35em;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .cover-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 16px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    margin-bottom: 48px;
+  }
+
+  .cover-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 48px;
+  }
+
+  .cover-concept {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 2.2;
+    letter-spacing: 0.15em;
+    color: var(--text-sub);
+    max-width: 320px;
+  }
+
+  .cover-badge {
+    position: absolute;
+    bottom: 113px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* ===== COMMON ===== */
+  .page-header {
+    text-align: center;
+    margin-bottom: 7mm;
+    padding-bottom: 5mm;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-header-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .page-header-ja {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: 0.3em;
+    color: var(--text);
+  }
+
+  .section {
+    margin-bottom: 6mm;
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    padding-bottom: 2mm;
+    margin-bottom: 3mm;
+    border-bottom: 1px solid var(--gold-dim);
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .section-title-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5mm 12mm;
+  }
+
+  .menu-grid-1 {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-grid-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1mm 8mm;
+  }
+
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.8mm 0;
+    border-bottom: 1px dotted var(--gold-dim);
+  }
+
+  .menu-item:last-child {
+    border-bottom: none;
+  }
+
+  .item-name {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 400;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+
+  .item-dots {
+    flex: 1;
+    border-bottom: 1px dotted var(--text-dim);
+    margin: 0 4px;
+    min-width: 10px;
+    position: relative;
+    top: -3px;
+  }
+
+  .item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--gold);
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+  }
+
+  .item-desc {
+    font-size: 9px;
+    color: var(--text-sub);
+    margin-top: -1mm;
+    padding-bottom: 1mm;
+    letter-spacing: 0.05em;
+    font-weight: 300;
+  }
+
+  /* Featured items */
+  .featured {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 4mm 5mm;
+    margin-bottom: 4mm;
+    position: relative;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -1px;
+    right: 12px;
+    background: var(--gold);
+    color: var(--bg);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 2px 10px 3px;
+  }
+
+  .featured .item-name {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+  }
+
+  .featured .item-price {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .featured .item-desc {
+    font-size: 10px;
+    margin-top: 1mm;
+    line-height: 1.6;
+  }
+
+  /* Page numbers */
+  .page-num {
+    position: absolute;
+    bottom: 8mm;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+  }
+
+  /* Footer / Info */
+  .info-section {
+    margin-top: 6mm;
+    padding-top: 5mm;
+    border-top: 1px solid var(--border);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm 10mm;
+  }
+
+  .info-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1mm;
+  }
+
+  .info-value {
+    font-size: 10.5px;
+    line-height: 1.7;
+    color: var(--text-sub);
+    letter-spacing: 0.05em;
+  }
+
+  .tax-note {
+    text-align: center;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-top: 4mm;
+  }
+
+  .sub-label {
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    margin-left: 4px;
+  }
+
+  /* Two-column sections */
+  .dual-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 10mm;
+  }
+
+  .dual-section > .section {
+    margin-bottom: 4mm;
+  }
+
+  @media print {
+    body { background: none; }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0;
+      padding: 14mm 16mm;
+      box-shadow: none;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: COVER ==================== -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-en">Yakiniku Wabiya</div>
+    <div class="cover-title">わびや</div>
+    <div class="cover-sub">Wabiya</div>
+    <div class="cover-line"></div>
+    <div class="cover-concept">
+      厳選した黒毛和牛と<br>
+      こだわりの自家製ダレで<br>
+      一皿一皿、丁寧にお届けします
+    </div>
+    <div class="cover-badge">Menu</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: SIGNATURE + TONGUE ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-en">Signature</div>
+    <div class="page-header-ja">名 物</div>
+  </div>
+
+  <div class="featured">
+    <div class="featured-badge">SIGNATURE</div>
+    <div class="menu-item">
+      <span class="item-name">【豪快】特製ダレ壺サガリ一本漬け</span>
+      <span class="item-price">1,380円</span>
+    </div>
+    <div class="item-desc">秘伝のタレに丸ごと漬け込んだ一本サガリ。豪快にハサミでカットしてお召し上がりください</div>
+  </div>
+
+  <div class="featured">
+    <div class="featured-badge">No.1</div>
+    <div class="menu-item">
+      <span class="item-name">【名物】マシマシネギ塩牛タン</span>
+      <span class="item-price">1,380円</span>
+    </div>
+    <div class="item-desc">たっぷりのネギ塩で味わう厚切り牛タン。わびや不動の人気No.1</div>
+  </div>
+
+  <div class="featured">
+    <div class="featured-badge">PREMIUM</div>
+    <div class="menu-item">
+      <span class="item-name">【名物】構想3年 黄金たれ黒毛和牛カルビ</span>
+      <span class="item-price">1,280円</span>
+    </div>
+    <div class="item-desc">3年かけて完成した黄金の自家製ダレと、厳選黒毛和牛の出会い</div>
+  </div>
+
+  <div class="section" style="margin-top: 6mm;">
+    <div class="section-title">
+      牛タン
+      <span class="section-title-en">Beef Tongue</span>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <span class="item-name">牛タン</span>
+        <span class="item-price">780円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">ネギ塩 牛タン</span>
+        <span class="item-price">880円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">厚切り牛タン<span class="sub-label"> 2枚</span></span>
+        <span class="item-price">1,280円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">ネギ包み牛タン</span>
+        <span class="item-price">980円</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      黒毛和牛
+      <span class="section-title-en">Japanese Black Wagyu</span>
+    </div>
+
+    <div style="margin-bottom: 3mm;">
+      <div style="font-size:9px; color: var(--gold-light); letter-spacing:0.2em; margin-bottom:2mm; font-family:'Cormorant Garamond',serif; text-transform:uppercase;">Kalbi</div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <span class="item-name">黒毛和牛 上カルビ</span>
+          <span class="item-price">1,580円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">黒毛和牛 特上カルビ</span>
+          <span class="item-price">1,980円</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 3mm;">
+      <div style="font-size:9px; color: var(--gold-light); letter-spacing:0.2em; margin-bottom:2mm; font-family:'Cormorant Garamond',serif; text-transform:uppercase;">Loin</div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <span class="item-name">黒毛和牛 厳選ロース</span>
+          <span class="item-price">1,580円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">黒毛和牛 上ロース</span>
+          <span class="item-price">1,780円</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">- 2 -</div>
+</div>
+
+<!-- ==================== PAGE 3: HARAMI, KALBI, PORK, CHICKEN ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-en">Grilled Selection</div>
+    <div class="page-header-ja">焼 物</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      ハラミ・カルビ・豚・鶏
+      <span class="section-title-en">Harami / Kalbi / Pork / Chicken</span>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <span class="item-name">うまだれハラミ</span>
+        <span class="item-price">780円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">ネギ塩 ハラミ</span>
+        <span class="item-price">880円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">旨ダレ牛カルビ</span>
+        <span class="item-price">680円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">ネギ塩 カルビ</span>
+        <span class="item-price">780円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">豚カルビ</span>
+        <span class="item-price">480円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">鶏もも</span>
+        <span class="item-price">480円</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      ホルモン
+      <span class="section-title-en">Offal</span>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <span class="item-name">職人仕込み コリコリ上ミノ</span>
+        <span class="item-price">780円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">とろ旨シマチョウ</span>
+        <span class="item-price">580円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">レバー</span>
+        <span class="item-price">480円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">ハツ</span>
+        <span class="item-price">480円</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      一品・サイド
+      <span class="section-title-en">Side Dishes</span>
+    </div>
+
+    <div style="margin-bottom: 3mm;">
+      <div style="font-size:9px; color: var(--gold-light); letter-spacing:0.2em; margin-bottom:2mm; font-family:'Cormorant Garamond',serif; text-transform:uppercase;">Kimchi & Namul</div>
+      <div class="menu-grid-3 menu-grid">
+        <div class="menu-item">
+          <span class="item-name">キムチ盛り合わせ</span>
+          <span class="item-price">480円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">彩りナムル盛り合わせ</span>
+          <span class="item-price">480円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">カクテキ</span>
+          <span class="item-price">380円</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 3mm;">
+      <div style="font-size:9px; color: var(--gold-light); letter-spacing:0.2em; margin-bottom:2mm; font-family:'Cormorant Garamond',serif; text-transform:uppercase;">Salad & Appetizer</div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <span class="item-name">チョレギサラダ</span>
+          <span class="item-price">580円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">韓国のり</span>
+          <span class="item-price">280円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">枝豆</span>
+          <span class="item-price">380円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">冷やしトマト</span>
+          <span class="item-price">380円</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:9px; color: var(--gold-light); letter-spacing:0.2em; margin-bottom:2mm; font-family:'Cormorant Garamond',serif; text-transform:uppercase;">Rice & Noodle</div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <span class="item-name">肉専用 白米</span>
+          <span class="item-price">280円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">つるんとメる さっぱり冷麺</span>
+          <span class="item-price">880円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">石焼ビビンバ</span>
+          <span class="item-price">880円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">わかめスープ</span>
+          <span class="item-price">280円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">たまごスープ</span>
+          <span class="item-price">280円</span>
+        </div>
+        <div class="menu-item">
+          <span class="item-name">テールスープ</span>
+          <span class="item-price">580円</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-num">- 3 -</div>
+</div>
+
+<!-- ==================== PAGE 4: DRINKS ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-en">Beverages</div>
+    <div class="page-header-ja">お飲み物</div>
+  </div>
+
+  <div class="dual-section">
+    <div>
+      <div class="section">
+        <div class="section-title">
+          ビール
+          <span class="section-title-en">Beer</span>
+        </div>
+        <div class="menu-grid menu-grid-1">
+          <div class="menu-item">
+            <span class="item-name">「マルエフ」生ビール 中ジョッキ</span>
+            <span class="item-price">550円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">瓶ビール（中瓶）</span>
+            <span class="item-price">600円</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          ハイボール・サワー
+          <span class="section-title-en">Highball / Sour</span>
+        </div>
+        <div class="menu-grid menu-grid-1">
+          <div class="menu-item">
+            <span class="item-name">角ハイボール</span>
+            <span class="item-price">480円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">レモンサワー</span>
+            <span class="item-price">450円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">グレープフルーツサワー</span>
+            <span class="item-price">450円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">ウーロンハイ</span>
+            <span class="item-price">450円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">緑茶ハイ</span>
+            <span class="item-price">450円</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          マッコリ・焼酎
+          <span class="section-title-en">Makgeolli / Shochu</span>
+        </div>
+        <div class="menu-grid menu-grid-1">
+          <div class="menu-item">
+            <span class="item-name">マッコリ（グラス）</span>
+            <span class="item-price">450円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">芋焼酎（ロック/水割り）</span>
+            <span class="item-price">480円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">麦焼酎（ロック/水割り）</span>
+            <span class="item-price">480円</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="section">
+        <div class="section-title">
+          ワイン
+          <span class="section-title-en">Wine</span>
+        </div>
+        <div class="menu-grid menu-grid-1">
+          <div class="menu-item">
+            <span class="item-name">赤ワイン（グラス）</span>
+            <span class="item-price">500円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">白ワイン（グラス）</span>
+            <span class="item-price">500円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">ボトルワイン 赤</span>
+            <span class="item-price">2,800円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">ボトルワイン 白</span>
+            <span class="item-price">2,800円</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          ソフトドリンク
+          <span class="section-title-en">Soft Drink</span>
+        </div>
+        <div class="menu-grid menu-grid-1">
+          <div class="menu-item">
+            <span class="item-name">ウーロン茶</span>
+            <span class="item-price">280円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">コーラ</span>
+            <span class="item-price">280円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">ジンジャーエール</span>
+            <span class="item-price">280円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">オレンジジュース</span>
+            <span class="item-price">280円</span>
+          </div>
+          <div class="menu-item">
+            <span class="item-name">カルピス</span>
+            <span class="item-price">280円</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">
+          お子様ドリンク
+          <span class="section-title-en">Kids Drink</span>
+        </div>
+        <div class="menu-grid menu-grid-1">
+          <div class="menu-item">
+            <span class="item-name">お子様ジュース各種</span>
+            <span class="item-price">200円</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tax-note">表示価格はすべて税込です</div>
+  <div class="page-num">- 4 -</div>
+</div>
+
+<!-- ==================== PAGE 5: LUNCH + SHOP INFO ==================== -->
+<div class="page">
+  <div class="page-header">
+    <div class="page-header-en">Lunch Menu</div>
+    <div class="page-header-ja">ランチ定食</div>
+  </div>
+
+  <div style="font-size:9px; color:var(--text-dim); text-align:center; margin-bottom:4mm; letter-spacing:0.1em;">
+    11:30 - 13:30（ラストオーダー 13:00）/ ライス・スープ・サラダ・キムチ付き
+  </div>
+
+  <div class="featured">
+    <div class="featured-badge">BEST</div>
+    <div class="menu-item">
+      <span class="item-name">ジューシーハラミランチ定食</span>
+      <span class="item-price">1,080円</span>
+    </div>
+    <div class="item-desc">厚切りハラミを特製ダレで。ボリューム満点のわびや定番ランチ</div>
+  </div>
+
+  <div class="menu-grid" style="margin-bottom: 5mm;">
+    <div class="menu-item">
+      <span class="item-name">黄金たれ黒毛和牛カルビ ランチ定食</span>
+      <span class="item-price">1,380円</span>
+    </div>
+    <div class="menu-item">
+      <span class="item-name">秘伝ダレ壺漬け 一本サガリ ランチ定食</span>
+      <span class="item-price">1,380円</span>
+    </div>
+    <div class="menu-item">
+      <span class="item-name">旨カルビランチ</span>
+      <span class="item-price">880円</span>
+    </div>
+    <div class="menu-item">
+      <span class="item-name">牛すじ煮込みカレー</span>
+      <span class="item-price">880円</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      テイクアウト
+      <span class="section-title-en">Takeout</span>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <span class="item-name">焼肉カルビ弁当</span>
+        <span class="item-price">980円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">焼肉ハラミ弁当</span>
+        <span class="item-price">980円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">黒毛和牛カルビ弁当</span>
+        <span class="item-price">1,280円</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">黒毛和牛ネギ塩カルビ弁当</span>
+        <span class="item-price">1,280円</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP INFO -->
+  <div class="info-section" style="margin-top: auto;">
+    <div style="text-align:center; margin-bottom: 5mm;">
+      <div class="cover-en" style="margin-bottom:4px;">Yakiniku</div>
+      <div style="font-family:'Shippori Mincho',serif; font-size:20px; letter-spacing:0.3em; color:var(--text);">わびや</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:10px; letter-spacing:0.4em; color:var(--gold); margin-top:2px; text-transform:uppercase;">Wabiya</div>
+    </div>
+
+    <div class="info-grid">
+      <div>
+        <div class="info-label">Address</div>
+        <div class="info-value">
+          〒135-0021<br>
+          東京都江東区白河3-9-16
+        </div>
+      </div>
+      <div>
+        <div class="info-label">Access</div>
+        <div class="info-value">
+          菊川駅 B2出口 徒歩5分<br>
+          清澄白河駅 徒歩7分
+        </div>
+      </div>
+      <div>
+        <div class="info-label">Hours</div>
+        <div class="info-value">
+          ランチ 11:30 - 13:30<br>
+          ディナー(平日) 18:00 - 22:00<br>
+          ディナー(土日祝) 17:00 - 22:00
+        </div>
+      </div>
+      <div>
+        <div class="info-label">Contact</div>
+        <div class="info-value">
+          TEL: 080-6576-5278<br>
+          Instagram: @wabiya.yakinikuyasan
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:5mm;">
+      <div style="font-size:9px; color:var(--text-dim); letter-spacing:0.1em;">個室あり（要予約） / Uber Eats対応</div>
+    </div>
+  </div>
+
+  <div class="tax-note">表示価格はすべて税込です</div>
+  <div class="page-num">- 5 -</div>
+</div>
+
+</body>
+</html>

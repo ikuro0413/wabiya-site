@@ -161,106 +161,55 @@
     /* QRコードエリア */
     .qr-wrap {
       background: #fff;
-      padding: 12px;
+      padding: 14px;
       border-radius: 4px;
       box-shadow: 0 12px 40px rgba(197,165,90,0.2);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .qr-wrap img {
       display: block;
-      width: 190px;
-      height: 190px;
+      width: 210px;
+      height: 210px;
     }
     .qr-caption {
       font-family: 'Zen Old Mincho', serif;
-      font-size: 14px;
+      font-size: 15px;
       letter-spacing: 0.2em;
       color: #f5f0e6;
-      margin-bottom: 4px;
+      margin-bottom: 22px;
       font-weight: 700;
     }
     .qr-caption .icon { color: #c5a55a; }
-    .qr-sub {
-      font-size: 10px;
-      color: #aaa;
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
-    }
-
-    /* 手順 */
-    .steps {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-bottom: 10px;
-      padding: 0 2px;
-    }
-    .step {
-      flex: 1;
-      max-width: 115px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      padding: 6px 4px;
-      border: 1px solid #3a3a3a;
-      border-radius: 4px;
-      background: rgba(197,165,90,0.03);
-    }
-    .step .no {
-      flex: 0 0 18px;
-      width: 18px;
-      height: 18px;
-      line-height: 17px;
-      border: 1px solid #c5a55a;
-      color: #c5a55a;
-      border-radius: 50%;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 10px;
-      font-weight: 500;
-    }
-    .step .txt {
-      font-size: 10px;
-      color: #ddd;
-      letter-spacing: 0.02em;
-      line-height: 1.3;
-      text-align: left;
-    }
 
     /* 有効期限 */
     .expiry {
-      margin-top: 2px;
-      padding: 7px 22px;
-      border: 1px solid #8b1428;
-      background: rgba(139,20,40,0.18);
+      padding: 10px 28px;
+      border: 1px solid #c5a55a;
       color: #f5f0e6;
-      font-size: 11px;
-      letter-spacing: 0.15em;
+      font-size: 12px;
+      letter-spacing: 0.2em;
       border-radius: 2px;
+      background: transparent;
     }
     .expiry strong {
-      color: #e87585;
+      color: #c5a55a;
       font-weight: 700;
       margin-left: 6px;
+      letter-spacing: 0.1em;
     }
 
     /* フッター */
     .footer {
       position: absolute;
-      bottom: 20px;
+      bottom: 28px;
       left: 0;
       right: 0;
       text-align: center;
-      font-size: 9px;
-      color: #666;
-      letter-spacing: 0.2em;
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 10px;
+      color: #888;
+      letter-spacing: 0.4em;
       z-index: 1;
-    }
-    .footer .addr {
-      margin-top: 3px;
-      color: #555;
-      letter-spacing: 0.1em;
     }
 
     /* 印刷設定 */
@@ -321,24 +270,13 @@
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&data=https%3A%2F%2Fwabiya.jp%2Fsurvey.html&margin=0&ecc=H" alt="アンケートQRコード">
     </div>
     <div class="qr-caption"><span class="icon">▲</span> スマホで読み取ってください <span class="icon">▲</span></div>
-    <div class="qr-sub">wabiya.jp/survey.html</div>
-
-    <div class="steps">
-      <div class="step"><div class="no">1</div><div class="txt">QRを<br>読み取り</div></div>
-      <div class="step"><div class="no">2</div><div class="txt">アンケート<br>約1分で回答</div></div>
-      <div class="step"><div class="no">3</div><div class="txt">クーポンを<br>スクショ保存</div></div>
-      <div class="step"><div class="no">4</div><div class="txt">次回来店時<br>にご提示</div></div>
-    </div>
 
     <div class="expiry">
       有効期限 <strong>2026年5月30日（土）まで</strong>
     </div>
   </div>
 
-  <div class="footer">
-    焼 肉 和 火 焼 わ び や
-    <div class="addr">東京都江東区清澄 3 - 6 - 12 &nbsp;／&nbsp; wabiya.jp</div>
-  </div>
+  <div class="footer">焼 肉 和 火 焼 わ び や</div>
 </div>
 
 </body>

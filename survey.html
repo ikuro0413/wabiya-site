@@ -134,6 +134,52 @@
       padding: 40px 16px 24px;
       background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
     }
+
+    .other-detail {
+      display: none;
+      margin-top: -4px;
+      margin-bottom: 10px;
+      padding: 12px;
+      background: #0f0f0f;
+      border: 1px solid #c5a55a;
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      animation: fadeIn 0.2s ease;
+    }
+    .other-detail.active { display: block; }
+    .other-detail textarea,
+    .other-detail input[type="text"] {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #444;
+      border-radius: 4px;
+      padding: 10px 12px;
+      color: #f5f5f5;
+      font-family: inherit;
+      font-size: 14px;
+      resize: vertical;
+      min-height: 56px;
+    }
+    .other-detail textarea:focus,
+    .other-detail input[type="text"]:focus {
+      outline: none;
+      border-color: #c5a55a;
+    }
+    .other-detail .hint {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* その他選択時はラジオカードの下端を角なしに */
+    .other-group.open .radio-option.other-radio {
+      border-radius: 6px 6px 0 0;
+      border-bottom: none;
+    }
   </style>
 </head>
 <body>
@@ -182,25 +228,37 @@
     <!-- Q3: 清澄白河に来た理由 -->
     <fieldset class="question-card">
       <legend><span class="num">3</span>清澄白河に来られた理由</legend>
-      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="近隣在住" required><span class="dot"></span>近隣に住んでいる</label>
-      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="職場が近い" required><span class="dot"></span>職場が近い</label>
-      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="観光・カフェ巡り" required><span class="dot"></span>観光・カフェ巡り</label>
-      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="友人・家族と待ち合わせ" required><span class="dot"></span>友人・家族と待ち合わせ</label>
-      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="わびや目的" required><span class="dot"></span>わびや目当てで来た</label>
-      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="その他" required><span class="dot"></span>その他</label>
+      <div class="other-group" data-group="reason">
+        <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="近隣在住" required><span class="dot"></span>近隣に住んでいる</label>
+        <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="職場が近い" required><span class="dot"></span>職場が近い</label>
+        <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="観光・カフェ巡り" required><span class="dot"></span>観光・カフェ巡り</label>
+        <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="友人・家族と待ち合わせ" required><span class="dot"></span>友人・家族と待ち合わせ</label>
+        <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="わびや目的" required><span class="dot"></span>わびや目当てで来た</label>
+        <label class="radio-option other-radio"><input type="radio" name="清澄白河に来た理由" value="その他" required data-other-trigger="reason"><span class="dot"></span>その他</label>
+        <div class="other-detail" data-other-detail="reason">
+          <div class="hint">差し支えなければ具体的にお聞かせください</div>
+          <input type="text" name="清澄白河に来た理由_詳細" placeholder="例：趣味の写真撮影で">
+        </div>
+      </div>
     </fieldset>
 
     <!-- Q4: 知った経緯 -->
     <fieldset class="question-card">
       <legend><span class="num">4</span>当店を知ったきっかけ</legend>
-      <label class="radio-option"><input type="radio" name="知った経緯" value="食べログ" required><span class="dot"></span>食べログ</label>
-      <label class="radio-option"><input type="radio" name="知った経緯" value="Googleマップ・検索" required><span class="dot"></span>Googleマップ・検索</label>
-      <label class="radio-option"><input type="radio" name="知った経緯" value="Instagram" required><span class="dot"></span>Instagram</label>
-      <label class="radio-option"><input type="radio" name="知った経緯" value="TikTok" required><span class="dot"></span>TikTok</label>
-      <label class="radio-option"><input type="radio" name="知った経緯" value="X(Twitter)" required><span class="dot"></span>X（旧Twitter）</label>
-      <label class="radio-option"><input type="radio" name="知った経緯" value="知人の紹介" required><span class="dot"></span>知人の紹介</label>
-      <label class="radio-option"><input type="radio" name="知った経緯" value="通りがかり・看板" required><span class="dot"></span>通りがかり・看板</label>
-      <label class="radio-option"><input type="radio" name="知った経緯" value="その他" required><span class="dot"></span>その他</label>
+      <div class="other-group" data-group="source">
+        <label class="radio-option"><input type="radio" name="知った経緯" value="食べログ" required><span class="dot"></span>食べログ</label>
+        <label class="radio-option"><input type="radio" name="知った経緯" value="Googleマップ・検索" required><span class="dot"></span>Googleマップ・検索</label>
+        <label class="radio-option"><input type="radio" name="知った経緯" value="Instagram" required><span class="dot"></span>Instagram</label>
+        <label class="radio-option"><input type="radio" name="知った経緯" value="TikTok" required><span class="dot"></span>TikTok</label>
+        <label class="radio-option"><input type="radio" name="知った経緯" value="X(Twitter)" required><span class="dot"></span>X（旧Twitter）</label>
+        <label class="radio-option"><input type="radio" name="知った経緯" value="知人の紹介" required><span class="dot"></span>知人の紹介</label>
+        <label class="radio-option"><input type="radio" name="知った経緯" value="通りがかり・看板" required><span class="dot"></span>通りがかり・看板</label>
+        <label class="radio-option other-radio"><input type="radio" name="知った経緯" value="その他" required data-other-trigger="source"><span class="dot"></span>その他</label>
+        <div class="other-detail" data-other-detail="source">
+          <div class="hint">差し支えなければ具体的にお聞かせください（メディア名・サイト名等）</div>
+          <input type="text" name="知った経緯_詳細" placeholder="例：Yahoo!ニュース、PayPayグルメ">
+        </div>
+      </div>
     </fieldset>
 
     <button type="submit" class="submit-btn" id="submitBtn">回答を送信して20%OFFクーポンを受け取る</button>
@@ -221,6 +279,29 @@
 <script>
   // タイムスタンプを自動設定
   document.getElementById('timestampField').value = new Date().toLocaleString('ja-JP', {timeZone: 'Asia/Tokyo'});
+
+  // 「その他」選択時の自由記述欄を表示/非表示
+  document.querySelectorAll('.other-group').forEach(group => {
+    const radios = group.querySelectorAll('input[type="radio"]');
+    const detail = group.querySelector('.other-detail');
+    radios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        const isOther = !!radio.dataset.otherTrigger;
+        if (radio.checked) {
+          if (isOther) {
+            detail.classList.add('active');
+            group.classList.add('open');
+          } else {
+            detail.classList.remove('active');
+            group.classList.remove('open');
+            // 自由記述欄が非選択に戻ったら中身もクリア
+            const input = detail.querySelector('input, textarea');
+            if (input) input.value = '';
+          }
+        }
+      });
+    });
+  });
 
   // 二重送信防止
   document.getElementById('surveyForm').addEventListener('submit', function() {

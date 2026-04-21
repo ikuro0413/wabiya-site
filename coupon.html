@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20% OFF クーポン | 焼肉 和火焼 わびや</title>
+  <meta name="description" content="アンケートご協力ありがとうございます。次回ご来店時にご提示ください。">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/brand/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#1a1a1a">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-49GXFMB7FQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-49GXFMB7FQ');
+  </script>
+
+  <link rel="stylesheet" href="wabiya.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #1a1a1a;
+      color: #f5f5f5;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 20px 16px;
+    }
+    .font-serif { font-family: 'Noto Serif JP', serif; }
+
+    .thanks {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .thanks .small-label {
+      font-size: 11px;
+      color: #c5a55a;
+      letter-spacing: 0.3em;
+      margin-bottom: 12px;
+    }
+    .thanks h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: #f5f5f5;
+      margin-bottom: 8px;
+    }
+    .thanks p {
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    .coupon {
+      max-width: 380px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, #2a1a10 0%, #1a1a1a 50%, #1a0a10 100%);
+      border: 2px solid #c5a55a;
+      border-radius: 12px;
+      padding: 36px 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(197, 165, 90, 0.15);
+    }
+    .coupon::before, .coupon::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background: #1a1a1a;
+      border-radius: 50%;
+    }
+    .coupon::before { top: 50%; left: -16px; transform: translateY(-50%); border-right: 2px solid #c5a55a; }
+    .coupon::after { top: 50%; right: -16px; transform: translateY(-50%); border-left: 2px solid #c5a55a; }
+
+    .coupon-header {
+      text-align: center;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed #c5a55a;
+    }
+    .coupon-brand {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 14px;
+      color: #c5a55a;
+      letter-spacing: 0.3em;
+    }
+    .coupon-subbrand {
+      font-size: 10px;
+      color: #888;
+      letter-spacing: 0.2em;
+      margin-top: 4px;
+    }
+
+    .discount {
+      text-align: center;
+      padding: 28px 0 20px;
+    }
+    .discount .label {
+      font-size: 11px;
+      color: #c5a55a;
+      letter-spacing: 0.3em;
+      margin-bottom: 4px;
+    }
+    .discount .big {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 72px;
+      font-weight: 700;
+      color: #c5a55a;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      display: inline-block;
+    }
+    .discount .big .pct {
+      font-size: 36px;
+      vertical-align: top;
+      margin-left: 2px;
+    }
+    .discount .en {
+      font-size: 20px;
+      color: #c5a55a;
+      letter-spacing: 0.2em;
+      margin-top: 8px;
+      font-family: 'Noto Serif JP', serif;
+    }
+
+    .coupon-desc {
+      text-align: center;
+      font-size: 13px;
+      color: #ccc;
+      line-height: 1.8;
+      padding: 16px 0;
+      border-top: 1px dashed #444;
+      border-bottom: 1px dashed #444;
+    }
+    .coupon-desc strong { color: #c5a55a; }
+
+    .coupon-meta {
+      padding-top: 16px;
+      font-size: 11px;
+      color: #999;
+    }
+    .coupon-meta .row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+    .coupon-meta .row strong { color: #ddd; font-weight: 400; letter-spacing: 0.1em; }
+
+    .instruction {
+      max-width: 380px;
+      margin: 32px auto 16px;
+      background: #8b1428;
+      color: #fff;
+      padding: 16px 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+    }
+    .instruction .icon {
+      font-size: 20px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .rules {
+      max-width: 380px;
+      margin: 20px auto 0;
+      background: #0f0f0f;
+      padding: 16px;
+      border-left: 2px solid #444;
+      font-size: 11px;
+      color: #888;
+      line-height: 1.7;
+    }
+    .rules h3 {
+      font-size: 12px;
+      color: #c5a55a;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    }
+    .rules ul { list-style: none; padding: 0; }
+    .rules li { padding: 2px 0 2px 14px; position: relative; }
+    .rules li::before { content: '・'; position: absolute; left: 0; color: #666; }
+
+    .back-link {
+      text-align: center;
+      margin-top: 32px;
+      padding-bottom: 20px;
+    }
+    .back-link a {
+      color: #888;
+      font-size: 13px;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 380px) {
+      .discount .big { font-size: 60px; }
+      .discount .big .pct { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="thanks">
+  <div class="small-label">THANK YOU</div>
+  <h1>ご協力ありがとうございました</h1>
+  <p>次回ご来店時、こちらの画面をご提示ください</p>
+</div>
+
+<div class="coupon">
+  <div class="coupon-header">
+    <div class="coupon-brand">焼 肉 わ び や</div>
+    <div class="coupon-subbrand">WABIYA / KIYOSUMI SHIRAKAWA</div>
+  </div>
+
+  <div class="discount">
+    <div class="label">SPECIAL COUPON</div>
+    <span class="big">20<span class="pct">%</span></span>
+    <div class="en">OFF</div>
+  </div>
+
+  <div class="coupon-desc">
+    <strong>次回ご来店時</strong>お会計から<br>
+    <strong>20％割引</strong>いたします
+  </div>
+
+  <div class="coupon-meta">
+    <div class="row"><strong>有効期限</strong><span id="expiry">ー</span></div>
+    <div class="row"><strong>発行日</strong><span id="issued">ー</span></div>
+    <div class="row"><strong>COUPON ID</strong><span id="couponId">ー</span></div>
+  </div>
+</div>
+
+<div class="instruction">
+  <span class="icon">📱</span>
+  この画面をスクリーンショットで<br>保存してください
+</div>
+
+<div class="rules">
+  <h3>ご利用条件</h3>
+  <ul>
+    <li>次回ご来店時にスタッフへこの画面をご提示ください</li>
+    <li>有効期限は発行日より3ヶ月間です</li>
+    <li>お一人様1回限り有効です</li>
+    <li>他の割引・サービス券との併用はできません</li>
+    <li>一部メニュー（ドリンク・サービス料等）は対象外となる場合があります</li>
+    <li>本クーポンは換金・譲渡できません</li>
+  </ul>
+</div>
+
+<div class="back-link">
+  <a href="index.html">公式サイトに戻る</a>
+</div>
+
+<script>
+  // 有効期限（発行日 + 3ヶ月）、発行日、クーポンIDを動的生成
+  const now = new Date();
+  const expiry = new Date(now.getFullYear(), now.getMonth() + 3, now.getDate());
+
+  const fmt = (d) => d.getFullYear() + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + String(d.getDate()).padStart(2,'0');
+
+  document.getElementById('issued').textContent = fmt(now);
+  document.getElementById('expiry').textContent = fmt(expiry);
+
+  // ランダムID（スクショ改ざん防止の目視確認用）
+  const id = 'WB-' + now.getFullYear().toString().slice(-2) +
+             String(now.getMonth()+1).padStart(2,'0') +
+             String(now.getDate()).padStart(2,'0') + '-' +
+             Math.random().toString(36).slice(2, 6).toUpperCase();
+  document.getElementById('couponId').textContent = id;
+
+  // GAイベント（アンケート完了トラッキング）
+  if (typeof gtag === 'function') {
+    gtag('event', 'survey_completed', {
+      'event_category': 'survey',
+      'event_label': 'coupon_issued'
+    });
+  }
+</script>
+
+</body>
+</html>

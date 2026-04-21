@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アンケート | 焼肉 和火焼 わびや</title>
+  <meta name="description" content="焼肉わびやご来店アンケート。ご回答いただいた方に次回20％OFFクーポンをプレゼント。">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/brand/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/brand/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#1a1a1a">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-49GXFMB7FQ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-49GXFMB7FQ');
+  </script>
+
+  <link rel="stylesheet" href="wabiya.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Noto Sans JP', sans-serif; background: #1a1a1a; color: #f5f5f5; line-height: 1.7; }
+    .font-serif { font-family: 'Noto Serif JP', serif; }
+    .gold-line { width: 60px; height: 2px; background: #c5a55a; margin: 16px auto; }
+
+    .question-card {
+      background: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      padding: 24px 20px;
+      margin-bottom: 20px;
+    }
+    .question-card legend {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 17px;
+      color: #c5a55a;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .question-card legend .num {
+      display: inline-block;
+      background: #c5a55a;
+      color: #1a1a1a;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 13px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .radio-option {
+      display: block;
+      position: relative;
+      padding: 14px 16px 14px 52px;
+      margin-bottom: 10px;
+      background: #1a1a1a;
+      border: 1px solid #444;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-size: 15px;
+    }
+    .radio-option:hover { border-color: #c5a55a; background: #222; }
+    .radio-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .radio-option .dot {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border: 2px solid #666;
+      border-radius: 50%;
+      background: transparent;
+      transition: all 0.15s ease;
+    }
+    .radio-option input[type="radio"]:checked ~ .dot {
+      border-color: #c5a55a;
+      background: #c5a55a;
+      box-shadow: inset 0 0 0 4px #1a1a1a;
+    }
+    .radio-option:has(input[type="radio"]:checked) {
+      border-color: #c5a55a;
+      background: #2a2410;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: #8b1428;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      margin-top: 24px;
+    }
+    .submit-btn:hover { background: #6b0f1f; }
+    .submit-btn:disabled { background: #666; cursor: not-allowed; }
+
+    .privacy-note {
+      font-size: 11px;
+      color: #888;
+      line-height: 1.6;
+      margin-top: 16px;
+      padding: 12px;
+      background: #0f0f0f;
+      border-left: 2px solid #444;
+    }
+
+    .hero-small {
+      text-align: center;
+      padding: 40px 16px 24px;
+      background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero-small">
+  <div class="font-serif text-xs tracking-[0.3em] text-[#c5a55a]">WABIYA &nbsp;|&nbsp; 焼肉 和火焼</div>
+  <h1 class="font-serif text-2xl md:text-3xl mt-3 tracking-wider">ご来店アンケート</h1>
+  <div class="gold-line"></div>
+  <p class="text-sm text-gray-300 mt-3 leading-relaxed">
+    ご協力いただいた方に<br class="md:hidden">
+    <span class="text-[#c5a55a] font-bold">次回20％OFFクーポン</span>をプレゼント
+  </p>
+</div>
+
+<div class="max-w-xl mx-auto px-4 py-8">
+
+  <form action="https://formsubmit.co/wabiya.yakinikuyasan@gmail.com" method="POST" id="surveyForm">
+
+    <!-- formsubmit.co settings -->
+    <input type="hidden" name="_subject" value="【わびや】アンケート新着回答">
+    <input type="hidden" name="_next" value="https://wabiya.jp/coupon.html">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_honey" value="">
+    <input type="hidden" name="回答日時" value="" id="timestampField">
+
+    <!-- Q1: 性別 -->
+    <fieldset class="question-card">
+      <legend><span class="num">1</span>性別を教えてください</legend>
+      <label class="radio-option"><input type="radio" name="性別" value="男性" required><span class="dot"></span>男性</label>
+      <label class="radio-option"><input type="radio" name="性別" value="女性" required><span class="dot"></span>女性</label>
+      <label class="radio-option"><input type="radio" name="性別" value="回答しない" required><span class="dot"></span>回答しない</label>
+    </fieldset>
+
+    <!-- Q2: 年齢 -->
+    <fieldset class="question-card">
+      <legend><span class="num">2</span>年齢を教えてください</legend>
+      <label class="radio-option"><input type="radio" name="年齢" value="〜19歳" required><span class="dot"></span>〜19歳</label>
+      <label class="radio-option"><input type="radio" name="年齢" value="20代" required><span class="dot"></span>20代</label>
+      <label class="radio-option"><input type="radio" name="年齢" value="30代" required><span class="dot"></span>30代</label>
+      <label class="radio-option"><input type="radio" name="年齢" value="40代" required><span class="dot"></span>40代</label>
+      <label class="radio-option"><input type="radio" name="年齢" value="50代" required><span class="dot"></span>50代</label>
+      <label class="radio-option"><input type="radio" name="年齢" value="60代以上" required><span class="dot"></span>60代以上</label>
+    </fieldset>
+
+    <!-- Q3: 清澄白河に来た理由 -->
+    <fieldset class="question-card">
+      <legend><span class="num">3</span>清澄白河に来られた理由</legend>
+      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="近隣在住" required><span class="dot"></span>近隣に住んでいる</label>
+      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="職場が近い" required><span class="dot"></span>職場が近い</label>
+      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="観光・カフェ巡り" required><span class="dot"></span>観光・カフェ巡り</label>
+      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="友人・家族と待ち合わせ" required><span class="dot"></span>友人・家族と待ち合わせ</label>
+      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="わびや目的" required><span class="dot"></span>わびや目当てで来た</label>
+      <label class="radio-option"><input type="radio" name="清澄白河に来た理由" value="その他" required><span class="dot"></span>その他</label>
+    </fieldset>
+
+    <!-- Q4: 知った経緯 -->
+    <fieldset class="question-card">
+      <legend><span class="num">4</span>当店を知ったきっかけ</legend>
+      <label class="radio-option"><input type="radio" name="知った経緯" value="食べログ" required><span class="dot"></span>食べログ</label>
+      <label class="radio-option"><input type="radio" name="知った経緯" value="Googleマップ・検索" required><span class="dot"></span>Googleマップ・検索</label>
+      <label class="radio-option"><input type="radio" name="知った経緯" value="Instagram" required><span class="dot"></span>Instagram</label>
+      <label class="radio-option"><input type="radio" name="知った経緯" value="TikTok" required><span class="dot"></span>TikTok</label>
+      <label class="radio-option"><input type="radio" name="知った経緯" value="X(Twitter)" required><span class="dot"></span>X（旧Twitter）</label>
+      <label class="radio-option"><input type="radio" name="知った経緯" value="知人の紹介" required><span class="dot"></span>知人の紹介</label>
+      <label class="radio-option"><input type="radio" name="知った経緯" value="通りがかり・看板" required><span class="dot"></span>通りがかり・看板</label>
+      <label class="radio-option"><input type="radio" name="知った経緯" value="その他" required><span class="dot"></span>その他</label>
+    </fieldset>
+
+    <button type="submit" class="submit-btn" id="submitBtn">回答を送信して20%OFFクーポンを受け取る</button>
+
+    <div class="privacy-note">
+      ※ご回答いただいた情報は店舗運営・マーケティング改善目的のみに使用し、第三者への提供は行いません。個人を特定する情報は含まれません。<br>
+      ※送信後、自動でクーポン画面へ遷移します。画面のスクリーンショットを保存のうえ、次回ご来店時にスタッフへご提示ください。
+    </div>
+  </form>
+</div>
+
+<footer class="text-center text-xs text-gray-500 py-10 px-4">
+  <div class="font-serif tracking-widest text-[#c5a55a]">焼肉 和火焼 わびや</div>
+  <div class="mt-2">〒135-0022 東京都江東区清澄3-6-12</div>
+  <div class="mt-2"><a href="index.html" class="text-gray-400 underline">公式サイトに戻る</a></div>
+</footer>
+
+<script>
+  // タイムスタンプを自動設定
+  document.getElementById('timestampField').value = new Date().toLocaleString('ja-JP', {timeZone: 'Asia/Tokyo'});
+
+  // 二重送信防止
+  document.getElementById('surveyForm').addEventListener('submit', function() {
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = '送信中...';
+  });
+</script>
+
+</body>
+</html>

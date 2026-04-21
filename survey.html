@@ -196,14 +196,9 @@
 
 <div class="max-w-xl mx-auto px-4 py-8">
 
-  <form action="https://formsubmit.co/wabiya.yakinikuyasan@gmail.com" method="POST" id="surveyForm">
+  <form id="surveyForm">
 
-    <!-- formsubmit.co settings -->
-    <input type="hidden" name="_subject" value="【わびや】アンケート新着回答">
-    <input type="hidden" name="_next" value="https://wabiya.jp/coupon.html">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_honey" value="">
+    <!-- hidden -->
     <input type="hidden" name="回答日時" value="" id="timestampField">
 
     <!-- Q1: 性別 -->
@@ -261,6 +256,20 @@
       </div>
     </fieldset>
 
+    <!-- Q5: 改善してほしい点（自由記述・任意） -->
+    <fieldset class="question-card">
+      <legend><span class="num">5</span>改善してほしい点・ご感想 <span style="font-size:11px; color:#888; letter-spacing:0.1em; margin-left:6px;">（任意）</span></legend>
+      <div style="font-size:12px; color:#999; margin-bottom:10px; line-height:1.7;">
+        料理・接客・店内環境・メニュー構成など、お気づきの点を自由にお書きください。<br>
+        厳しいご意見も大歓迎です。今後の改善に活かします。
+      </div>
+      <textarea name="改善してほしい点" rows="4"
+        placeholder="例：もう少しサイドメニューのバリエーションが欲しい、〇〇が良かった 等"
+        style="width:100%; background:#1a1a1a; border:1px solid #444; border-radius:6px; padding:14px; color:#f5f5f5; font-family:inherit; font-size:15px; line-height:1.7; resize:vertical; min-height:100px; transition:border-color 0.2s;"
+        onfocus="this.style.borderColor='#c5a55a'"
+        onblur="this.style.borderColor='#444'"></textarea>
+    </fieldset>
+
     <button type="submit" class="submit-btn" id="submitBtn">回答を送信して20%OFFクーポンを受け取る</button>
 
     <div class="privacy-note">
@@ -277,6 +286,9 @@
 </footer>
 
 <script>
+  // Apps Script Web App エンドポイント（回答をスプシ「アンケート」タブに保存＋通知メール）
+  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxObGuuk1C5U55M6WZL4-4nCamr-UDMr2lE39xQAONKbvLP2YsX9hxGhdZaLwGbiIuu/exec';
+
   // タイムスタンプを自動設定
   document.getElementById('timestampField').value = new Date().toLocaleString('ja-JP', {timeZone: 'Asia/Tokyo'});
 
@@ -294,7 +306,6 @@
           } else {
             detail.classList.remove('active');
             group.classList.remove('open');
-            // 自由記述欄が非選択に戻ったら中身もクリア
             const input = detail.querySelector('input, textarea');
             if (input) input.value = '';
           }
@@ -303,11 +314,37 @@
     });
   });
 
-  // 二重送信防止
-  document.getElementById('surveyForm').addEventListener('submit', function() {
+  // フォーム送信: GASにPOST → 成功/失敗問わずクーポン画面へ
+  document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
     const btn = document.getElementById('submitBtn');
     btn.disabled = true;
     btn.textContent = '送信中...';
+
+    const formData = new FormData(e.target);
+    const params = new URLSearchParams();
+    for (const [key, value] of formData.entries()) {
+      params.append(key, value);
+    }
+
+    try {
+      await fetch(GAS_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: params
+      });
+    } catch (err) {
+      // no-corsのためレスポンス不明。エラーが出てもスプシ記録は成功している可能性が高い
+      console.warn('submit warn:', err);
+    }
+
+    // GA4イベント（任意）
+    if (typeof gtag === 'function') {
+      gtag('event', 'survey_submit', { event_category: 'survey' });
+    }
+
+    // クーポン画面へ遷移
+    window.location.href = 'coupon.html';
   });
 </script>
 

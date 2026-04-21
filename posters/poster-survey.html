@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや アンケートQRポスター A4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* A4: 210mm x 297mm = 595 x 842px @72dpi */
+    .poster {
+      width: 595px;
+      height: 842px;
+      position: relative;
+      overflow: hidden;
+      background: #0a0a0a;
+      font-family: 'Zen Old Mincho', serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 36px 40px 40px;
+    }
+
+    /* 背景: 深いグラデーション＋和紙質感 */
+    .bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 50%, #1a1411 0%, #0a0806 70%),
+        repeating-linear-gradient(
+          45deg,
+          transparent 0, transparent 2px,
+          rgba(197,165,90,0.02) 2px, rgba(197,165,90,0.02) 3px
+        );
+    }
+
+    /* 四隅の装飾ライン */
+    .corner {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 1px solid #c5a55a;
+      opacity: 0.6;
+    }
+    .corner.tl { top: 24px; left: 24px; border-right: none; border-bottom: none; }
+    .corner.tr { top: 24px; right: 24px; border-left: none; border-bottom: none; }
+    .corner.bl { bottom: 24px; left: 24px; border-right: none; border-top: none; }
+    .corner.br { bottom: 24px; right: 24px; border-left: none; border-top: none; }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* 上部ブランド */
+    .brand-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.7em;
+      color: #c5a55a;
+      font-weight: 300;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .brand-jp {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.4em;
+      margin-bottom: 4px;
+      color: #f5f0e6;
+    }
+    .brand-sub {
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: #888;
+      margin-bottom: 14px;
+    }
+
+    /* 区切り */
+    .divider {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c5a55a, transparent);
+      margin: 0 0 20px;
+    }
+
+    /* メイン訴求 */
+    .hero-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 0.5em;
+      color: #c5a55a;
+      margin-bottom: 8px;
+    }
+    .hero-main {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      line-height: 1.4;
+      margin-bottom: 14px;
+      color: #f5f0e6;
+    }
+    .hero-main .accent {
+      color: #c5a55a;
+    }
+
+    /* 20% OFF バッジ */
+    .discount {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+    .discount .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 88px;
+      font-weight: 600;
+      color: #c5a55a;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      text-shadow: 0 0 40px rgba(197,165,90,0.3);
+    }
+    .discount .pct {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 46px;
+      font-weight: 600;
+      color: #c5a55a;
+      line-height: 1;
+    }
+    .discount .off {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 500;
+      color: #c5a55a;
+      letter-spacing: 0.15em;
+      margin-left: 8px;
+    }
+    .discount-desc {
+      font-size: 13px;
+      color: #f5f0e6;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .discount-desc strong {
+      color: #c5a55a;
+      font-weight: 700;
+    }
+
+    /* QRコードエリア */
+    .qr-wrap {
+      background: #fff;
+      padding: 12px;
+      border-radius: 4px;
+      box-shadow: 0 12px 40px rgba(197,165,90,0.2);
+      margin-bottom: 12px;
+    }
+    .qr-wrap img {
+      display: block;
+      width: 190px;
+      height: 190px;
+    }
+    .qr-caption {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: #f5f0e6;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+    .qr-caption .icon { color: #c5a55a; }
+    .qr-sub {
+      font-size: 10px;
+      color: #aaa;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    /* 手順 */
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 10px;
+      padding: 0 2px;
+    }
+    .step {
+      flex: 1;
+      max-width: 115px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 6px 4px;
+      border: 1px solid #3a3a3a;
+      border-radius: 4px;
+      background: rgba(197,165,90,0.03);
+    }
+    .step .no {
+      flex: 0 0 18px;
+      width: 18px;
+      height: 18px;
+      line-height: 17px;
+      border: 1px solid #c5a55a;
+      color: #c5a55a;
+      border-radius: 50%;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      font-weight: 500;
+    }
+    .step .txt {
+      font-size: 10px;
+      color: #ddd;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+      text-align: left;
+    }
+
+    /* 有効期限 */
+    .expiry {
+      margin-top: 2px;
+      padding: 7px 22px;
+      border: 1px solid #8b1428;
+      background: rgba(139,20,40,0.18);
+      color: #f5f0e6;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      border-radius: 2px;
+    }
+    .expiry strong {
+      color: #e87585;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+
+    /* フッター */
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 9px;
+      color: #666;
+      letter-spacing: 0.2em;
+      z-index: 1;
+    }
+    .footer .addr {
+      margin-top: 3px;
+      color: #555;
+      letter-spacing: 0.1em;
+    }
+
+    /* 印刷設定 */
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    @media print {
+      body {
+        margin: 0;
+        background: #fff;
+      }
+      .poster {
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #2a2a2a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="bg"></div>
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="content">
+    <div class="brand-en">W A B I Y A</div>
+    <div class="brand-jp">焼 肉 和 火 焼</div>
+    <div class="brand-sub">K I Y O S U M I &nbsp; S H I R A K A W A</div>
+
+    <div class="divider"></div>
+
+    <div class="hero-label">SPECIAL OFFER</div>
+    <div class="hero-main">ご来店の<span class="accent">御礼</span>に<br>次回<span class="accent">20%OFF</span>クーポン進呈</div>
+
+    <div class="discount">
+      <span class="num">20</span><span class="pct">%</span><span class="off">OFF</span>
+    </div>
+
+    <div class="discount-desc">
+      <strong>簡単4問アンケート</strong>にお答えいただくだけ<br>
+      その場でクーポンをプレゼント
+    </div>
+
+    <div class="qr-wrap">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=420x420&data=https%3A%2F%2Fwabiya.jp%2Fsurvey.html&margin=0&ecc=H" alt="アンケートQRコード">
+    </div>
+    <div class="qr-caption"><span class="icon">▲</span> スマホで読み取ってください <span class="icon">▲</span></div>
+    <div class="qr-sub">wabiya.jp/survey.html</div>
+
+    <div class="steps">
+      <div class="step"><div class="no">1</div><div class="txt">QRを<br>読み取り</div></div>
+      <div class="step"><div class="no">2</div><div class="txt">アンケート<br>約1分で回答</div></div>
+      <div class="step"><div class="no">3</div><div class="txt">クーポンを<br>スクショ保存</div></div>
+      <div class="step"><div class="no">4</div><div class="txt">次回来店時<br>にご提示</div></div>
+    </div>
+
+    <div class="expiry">
+      有効期限 <strong>2026年5月30日（土）まで</strong>
+    </div>
+  </div>
+
+  <div class="footer">
+    焼 肉 和 火 焼 わ び や
+    <div class="addr">東京都江東区清澄 3 - 6 - 12 &nbsp;／&nbsp; wabiya.jp</div>
+  </div>
+</div>
+
+</body>
+</html>

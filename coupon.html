@@ -237,7 +237,7 @@
   </div>
 
   <div class="coupon-meta">
-    <div class="row"><strong>有効期限</strong><span id="expiry">ー</span></div>
+    <div class="row"><strong>有効期限</strong><span style="color:#c5a55a; font-weight:700;">2026年5月30日（土）まで</span></div>
     <div class="row"><strong>発行日</strong><span id="issued">ー</span></div>
     <div class="row"><strong>COUPON ID</strong><span id="couponId">ー</span></div>
   </div>
@@ -252,7 +252,7 @@
   <h3>ご利用条件</h3>
   <ul>
     <li>次回ご来店時にスタッフへこの画面をご提示ください</li>
-    <li>有効期限は発行日より3ヶ月間です</li>
+    <li><strong style="color:#c5a55a;">有効期限：2026年5月30日（土）まで</strong></li>
     <li>お一人様1回限り有効です</li>
     <li>他の割引・サービス券との併用はできません</li>
     <li>一部メニュー（ドリンク・サービス料等）は対象外となる場合があります</li>
@@ -265,14 +265,10 @@
 </div>
 
 <script>
-  // 有効期限（発行日 + 3ヶ月）、発行日、クーポンIDを動的生成
+  // 発行日・クーポンIDを動的生成（有効期限は固定: 2026/05/30）
   const now = new Date();
-  const expiry = new Date(now.getFullYear(), now.getMonth() + 3, now.getDate());
-
   const fmt = (d) => d.getFullYear() + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + String(d.getDate()).padStart(2,'0');
-
   document.getElementById('issued').textContent = fmt(now);
-  document.getElementById('expiry').textContent = fmt(expiry);
 
   // ランダムID（スクショ改ざん防止の目視確認用）
   const id = 'WB-' + now.getFullYear().toString().slice(-2) +

@@ -110,26 +110,28 @@
       letter-spacing: 0.3em;
       margin-bottom: 4px;
     }
-    .discount .big {
+    .discount-main {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      line-height: 1;
+    }
+    .discount-main .num {
       font-family: 'Noto Serif JP', serif;
-      font-size: 72px;
+      font-size: 80px;
       font-weight: 700;
       color: #c5a55a;
       line-height: 1;
       letter-spacing: -0.02em;
-      display: inline-block;
     }
-    .discount .big .pct {
-      font-size: 36px;
-      vertical-align: top;
-      margin-left: 2px;
-    }
-    .discount .en {
-      font-size: 20px;
-      color: #c5a55a;
-      letter-spacing: 0.2em;
-      margin-top: 8px;
+    .discount-main .pct-off {
       font-family: 'Noto Serif JP', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #c5a55a;
+      letter-spacing: 0.1em;
+      margin-bottom: 6px;
+      margin-left: 2px;
     }
 
     .coupon-desc {
@@ -227,8 +229,9 @@
 
   <div class="discount">
     <div class="label">SPECIAL COUPON</div>
-    <span class="big">20<span class="pct">%</span></span>
-    <div class="en">OFF</div>
+    <div class="discount-main">
+      <span class="num">20</span><span class="pct-off">% OFF</span>
+    </div>
   </div>
 
   <div class="coupon-desc">

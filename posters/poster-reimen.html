@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや さっぱり冷麺ポスター</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Old+Mincho:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .poster {
+      width: 594px;
+      height: 841px;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Zen Old Mincho', serif;
+      color: #fff;
+    }
+
+    .bg-photo {
+      position: absolute;
+      inset: 0;
+      background-color: #0a0806;
+      background-image: url('../images/reimen.jpg');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    /* 冷感を出す微細な青みオーバーレイ + 既存の暗グラデ */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(10,20,30,0.30) 0%,
+          rgba(0,0,0,0.08) 18%,
+          rgba(0,0,0,0.03) 38%,
+          rgba(0,0,0,0.25) 60%,
+          rgba(0,0,0,0.78) 82%,
+          rgba(0,0,0,0.95) 100%
+        );
+    }
+
+    .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0 44px 32px;
+    }
+
+    /* 縦書きメニュー名を右側に配置 */
+    .menu-vertical {
+      position: absolute;
+      right: 36px;
+      top: 32%;
+      transform: translateY(-50%);
+    }
+
+    /* 英語ラベル: 字間広め */
+    .menu-en-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.6em;
+      color: #c5a55a;
+      margin-bottom: 10px;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+
+    /* メイン見出し: 縦書き */
+    .menu-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 56px;
+      font-weight: 500;
+      writing-mode: vertical-rl;
+      line-height: 1.7;
+      letter-spacing: 0.18em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.5);
+      height: auto;
+      margin-bottom: 0;
+    }
+
+    /* キンキンに冷えた、を強調する小見出し（縦書きの上） */
+    .menu-sub {
+      font-family: 'Shippori Mincho', serif;
+      writing-mode: vertical-rl;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.55em;
+      color: rgba(255,255,255,0.85);
+      margin-right: 14px;
+      margin-bottom: 0;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.8);
+      align-self: flex-start;
+    }
+
+    .menu-vertical-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .menu-desc {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.85;
+      margin-bottom: 12px;
+      font-weight: 300;
+      letter-spacing: 0.07em;
+    }
+
+    /* 価格 */
+    .price {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #c5a55a;
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .price .yen-small {
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      margin-left: 4px;
+      opacity: 0.85;
+    }
+
+    .divider {
+      width: 44px;
+      height: 1px;
+      background: #c5a55a;
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+
+    /* 提供時間帯 */
+    .time {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.72);
+      letter-spacing: 0.18em;
+      margin-bottom: 14px;
+      font-weight: 300;
+    }
+
+    /* キャッチ */
+    .catch {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.5);
+      line-height: 2;
+      margin-bottom: 18px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+    }
+
+    /* 店名: 明朝体, 字間広め */
+    .shop-name {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 13px;
+      color: #c5a55a;
+      letter-spacing: 0.35em;
+      font-weight: 400;
+      opacity: 0.85;
+    }
+
+    /* 上部 季節ラベル */
+    .top-label {
+      position: absolute;
+      top: 28px;
+      left: 44px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-label span.en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      color: #c5a55a;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.8);
+    }
+    .top-label span.bar {
+      width: 26px;
+      height: 1px;
+      background: #c5a55a;
+      opacity: 0.6;
+    }
+    .top-label span.jp {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.8);
+    }
+
+    /* 右上 NEW バッジ */
+    .badge {
+      position: absolute;
+      top: 28px;
+      right: 36px;
+      width: 78px;
+      height: 78px;
+      border: 1px solid #c5a55a;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #c5a55a;
+      background: rgba(0,0,0,0.32);
+      backdrop-filter: blur(2px);
+      box-shadow: 0 0 24px rgba(0,0,0,0.4);
+    }
+    .badge .badge-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      font-weight: 400;
+    }
+    .badge .badge-jp {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+    .badge .badge-line {
+      width: 30px;
+      height: 1px;
+      background: #c5a55a;
+      opacity: 0.6;
+      margin: 4px 0;
+    }
+
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+      body { background: #fff; }
+      .poster { width: 210mm; height: 297mm; }
+      .menu-name { font-size: 130px; letter-spacing: 0.2em; }
+      .menu-sub { font-size: 38px; letter-spacing: 0.55em; margin-right: 32px; }
+      .price { font-size: 62px; }
+      .price .yen-small { font-size: 32px; }
+      .menu-en-label { font-size: 30px; }
+      .time { font-size: 27px; }
+      .menu-desc { font-size: 26px; }
+      .catch { font-size: 24px; }
+      .shop-name { font-size: 32px; letter-spacing: 0.4em; }
+      .content { padding: 0 110px 80px; }
+      .divider { width: 110px; height: 2px; margin-bottom: 40px; }
+      .top-label span.en { font-size: 26px; }
+      .top-label span.bar { width: 60px; }
+      .top-label span.jp { font-size: 26px; }
+      .top-label { top: 60px; left: 110px; gap: 26px; }
+      .badge { width: 180px; height: 180px; top: 60px; right: 90px; }
+      .badge .badge-en { font-size: 22px; margin-bottom: 8px; }
+      .badge .badge-jp { font-size: 38px; }
+      .badge .badge-line { width: 70px; margin: 8px 0; }
+      .menu-vertical { right: 90px; top: 33%; }
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #222;
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="bg-photo"></div>
+  <div class="overlay"></div>
+
+  <div class="top-label">
+    <span class="en">Summer Limited</span>
+    <span class="bar"></span>
+    <span class="jp">ランチ夏季限定</span>
+  </div>
+
+  <div class="menu-vertical">
+    <div class="menu-vertical-wrap">
+      <h1 class="menu-name">さっぱり冷麺</h1>
+      <div class="menu-sub">微細氷でキンキンに冷えた</div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="menu-en-label">Cold Noodle</div>
+    <div class="menu-desc">つるっと喉に抜けるしこしこ麺。<br>キムチを添えて、夏にぴったりの一杯。</div>
+    <div class="price">¥900<span class="yen-small">（税込）</span></div>
+    <div class="divider"></div>
+    <div class="time">ランチ・ディナー両方でご注文いただけます</div>
+    <div class="catch">
+      焼肉のあとに、暑い昼に。<br>
+      キンと冷えた氷とともに。
+    </div>
+    <div class="shop-name">焼肉 和火焼 わびや</div>
+  </div>
+</div>
+
+</body>
+</html>

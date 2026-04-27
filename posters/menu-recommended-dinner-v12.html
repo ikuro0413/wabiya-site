@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><title>v12 インスタ風グリッド全面写真</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Kaisei+Tokumin:wght@500;700;800&family=Yuji+Syuku&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#0a0606;font-family:'Noto Sans JP',sans-serif}
+.poster{width:595px;height:842px;position:relative;overflow:hidden;background:#0a0606;color:#fff}
+/* ヘッダー（コンパクト） */
+.head{padding:18px 24px 12px;background:#0a0606;text-align:center;border-bottom:2px solid #c5a55a;position:relative;z-index:5}
+.head::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:1px;background:rgba(197,165,90,0.5)}
+.head .label{display:inline-block;background:#b32a2a;color:#fff;padding:3px 14px;font-family:'Kaisei Tokumin',serif;font-size:10px;letter-spacing:0.4em;font-weight:800;margin-bottom:6px;box-shadow:1px 1px 0 #000}
+.head h1{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:36px;font-weight:800;letter-spacing:0.18em;color:#fff;line-height:1;margin-bottom:4px}
+.head h1 .em{color:#c5a55a}
+.head .sub{font-family:'Shippori Mincho',serif;font-size:11px;letter-spacing:0.4em;color:rgba(255,255,255,0.65)}
+/* 6品グリッド：3列×2行 全面写真 */
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:0;height:calc(842px - 92px - 90px)}
+.cell{position:relative;overflow:hidden;border-right:2px solid #0a0606;border-bottom:2px solid #0a0606}
+.cell:nth-child(3n){border-right:none}
+.cell:nth-last-child(-n+3){border-bottom:none}
+.cell .photo{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(1.15) contrast(1.05) brightness(0.93)}
+.cell .photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,rgba(0,0,0,0.2) 50%,rgba(0,0,0,0.4) 100%)}
+.cell .num-box{position:absolute;top:8px;left:8px;background:#b32a2a;color:#fff;padding:3px 8px;font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:13px;font-weight:800;letter-spacing:0.05em;line-height:1.1;z-index:2;box-shadow:1px 2px 6px rgba(0,0,0,0.5)}
+.cell .badge{position:absolute;top:9px;right:8px;background:rgba(0,0,0,0.7);color:#c5a55a;padding:3px 7px;font-family:'Kaisei Tokumin',serif;font-size:8px;letter-spacing:0.18em;font-weight:700;z-index:2;border:1px solid rgba(197,165,90,0.6)}
+.cell .info{position:absolute;left:0;right:0;bottom:0;padding:10px 10px 12px;z-index:2}
+.cell h3{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:13px;font-weight:800;color:#fff;letter-spacing:0.04em;line-height:1.25;margin-bottom:5px;text-shadow:0 1px 4px rgba(0,0,0,0.7);min-height:32px}
+.cell .price{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:22px;color:#f9c34a;font-weight:800;letter-spacing:0.02em;text-shadow:0 1px 4px rgba(0,0,0,0.7);line-height:1}
+.footer{position:absolute;left:0;right:0;bottom:0;padding:14px 24px 16px;background:#0a0606;border-top:2px solid #c5a55a;text-align:center;z-index:5}
+.footer .name{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:18px;letter-spacing:0.4em;color:#c5a55a;margin-bottom:4px;font-weight:800}
+.footer .info{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:rgba(255,255,255,0.6);line-height:1.7;letter-spacing:0.08em}
+.footer .info span{margin:0 5px}
+@media print{@page{size:A4 portrait;margin:0}body{background:#fff;display:block;min-height:auto}.poster{width:210mm;height:297mm}}
+</style></head><body>
+<div class="poster">
+<div class="head">
+<span class="label">Tonight's Picks</span>
+<h1>Today's<span class="em">SIX</span></h1>
+<div class="sub">焼 肉  和 火 焼  わ び や  /  D I N N E R</div>
+</div>
+<div class="grid">
+<div class="cell"><div class="photo" style="background-image:url('../images/gyutan-bekkaku.webp')"></div><span class="num-box">01</span><span class="badge">FEATURED</span><div class="info"><h3>【別格】<br>厚切り牛タン</h3><div class="price">¥1,980</div></div></div>
+<div class="cell"><div class="photo" style="background-image:url('../images/joukarubi.webp')"></div><span class="num-box">02</span><span class="badge">SIGNATURE</span><div class="info"><h3>厳選 黒毛和牛<br>上カルビ</h3><div class="price">¥1,580</div></div></div>
+<div class="cell"><div class="photo" style="background-image:url('../images/negishio-tsutsumi.webp')"></div><span class="num-box">03</span><span class="badge">SIGNATURE</span><div class="info"><h3>牛タン<br>ネギ塩包み</h3><div class="price">¥1,480</div></div></div>
+<div class="cell"><div class="photo" style="background-image:url('../images/ogon-tare-karubi.webp')"></div><span class="num-box">04</span><span class="badge">SIGNATURE</span><div class="info"><h3>黄金たれ<br>黒毛和牛カルビ</h3><div class="price">¥1,580</div></div></div>
+<div class="cell"><div class="photo" style="background-image:url('../images/umadare-harami.webp')"></div><span class="num-box">05</span><span class="badge">BEST</span><div class="info"><h3>うまだれ<br>ハラミ</h3><div class="price">¥1,280</div></div></div>
+<div class="cell"><div class="photo" style="background-image:url('../images/tsubosagari.webp')"></div><span class="num-box">06</span><span class="badge">SIGNATURE</span><div class="info"><h3>特製ダレ<br>壺サガリ</h3><div class="price">¥1,360</div></div></div>
+</div>
+<div class="footer">
+<div class="name">焼肉 和火焼 わびや</div>
+<div class="info"><span>東京都江東区白河3-9-16</span><span>菊川駅 徒歩5分</span><span>080-6576-5278</span></div>
+<div class="info"><span>ディナー（平日）18:00〜22:00 L.O.21:30</span><span>土日祝 17:00〜22:00</span></div>
+</div>
+</div></body></html>

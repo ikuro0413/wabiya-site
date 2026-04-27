@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><title>v17 横長帯×6縦並び</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Kaisei+Tokumin:wght@500;700;800&family=Yuji+Syuku&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#0a0606;font-family:'Noto Sans JP',sans-serif}
+.poster{width:595px;height:842px;position:relative;overflow:hidden;background:#0a0606;color:#fff}
+.head{padding:14px 28px 10px;background:#0a0606;border-bottom:2px solid #c5a55a;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:5}
+.head .l{display:flex;align-items:center;gap:14px}
+.head .pill{background:#b32a2a;color:#fff;padding:4px 14px;font-family:'Kaisei Tokumin',serif;font-size:10px;letter-spacing:0.4em;font-weight:700}
+.head h1{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:22px;font-weight:800;letter-spacing:0.16em;color:#fff;line-height:1}
+.head h1 .em{color:#c5a55a}
+.head .meta{font-family:'Kaisei Tokumin',serif;font-size:10px;letter-spacing:0.4em;color:#c5a55a;font-weight:700}
+/* 横長帯×6 */
+.rows{position:absolute;top:50px;left:0;right:0;bottom:90px;display:flex;flex-direction:column}
+.brow{display:flex;flex:1;border-bottom:1px solid rgba(197,165,90,0.25);align-items:stretch}
+.brow:last-child{border-bottom:none}
+.brow.flip .photo{order:2}
+.brow.flip .info{order:1}
+.brow .photo{width:42%;background-position:center;background-size:cover;filter:saturate(1.15) contrast(1.05) brightness(0.95);position:relative}
+.brow .photo::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,rgba(0,0,0,0.45),transparent)}
+.brow.flip .photo::after{background:linear-gradient(-90deg,rgba(0,0,0,0.45),transparent)}
+.brow .info{flex:1;padding:14px 22px;display:flex;flex-direction:column;justify-content:center;background:#0a0606;position:relative}
+.brow .num{position:absolute;bottom:8px;right:16px;font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:30px;color:rgba(197,165,90,0.4);font-weight:800;line-height:1;letter-spacing:0.05em;z-index:0}
+.brow.flip .num{right:auto;left:16px}
+.brow .badge{display:inline-block;background:rgba(197,165,90,0.15);color:#c5a55a;border:1px solid rgba(197,165,90,0.55);padding:1.5px 8px;font-family:'Kaisei Tokumin',serif;font-size:9px;letter-spacing:0.22em;font-weight:700;margin-bottom:5px;align-self:flex-start}
+.brow .badge.feat{background:#b32a2a;color:#fff;border-color:#b32a2a}
+.brow .badge.best{background:#c5a55a;color:#0a0606;border-color:#c5a55a}
+.brow h3{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:15px;font-weight:800;color:#fff;letter-spacing:0.04em;line-height:1.25;margin-bottom:4px;position:relative;z-index:1}
+.brow .badge,.brow .price{position:relative;z-index:1}
+.brow .price{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:24px;color:#c5a55a;font-weight:800;letter-spacing:0.02em;line-height:1}
+.footer{position:absolute;left:0;right:0;bottom:0;padding:14px 24px 16px;background:#000;border-top:2px solid #c5a55a;text-align:center;z-index:5}
+.footer .name{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:18px;letter-spacing:0.4em;color:#c5a55a;margin-bottom:4px;font-weight:800}
+.footer .info{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:rgba(255,255,255,0.6);line-height:1.7;letter-spacing:0.08em}
+.footer .info span{margin:0 5px}
+@media print{@page{size:A4 portrait;margin:0}body{background:#fff;display:block;min-height:auto}.poster{width:210mm;height:297mm}}
+</style></head><body>
+<div class="poster">
+<div class="head">
+<div class="l"><span class="pill">Tonight's Picks</span><h1>Today's <span class="em">SIX</span></h1></div>
+<span class="meta">DINNER · 2026.04</span>
+</div>
+<div class="rows">
+<div class="brow"><div class="photo" style="background-image:url('../images/gyutan-bekkaku.webp')"></div><div class="info"><span class="num">01</span><span class="badge feat">FEATURED</span><h3>【別格】厚切り牛タン</h3><div class="price">¥1,980</div></div></div>
+<div class="brow flip"><div class="photo" style="background-image:url('../images/joukarubi.webp')"></div><div class="info"><span class="num">02</span><span class="badge">SIGNATURE</span><h3>厳選 黒毛和牛 上カルビ</h3><div class="price">¥1,580</div></div></div>
+<div class="brow"><div class="photo" style="background-image:url('../images/negishio-tsutsumi.webp')"></div><div class="info"><span class="num">03</span><span class="badge">SIGNATURE</span><h3>牛タンネギ塩包み</h3><div class="price">¥1,480</div></div></div>
+<div class="brow flip"><div class="photo" style="background-image:url('../images/ogon-tare-karubi.webp')"></div><div class="info"><span class="num">04</span><span class="badge">SIGNATURE</span><h3>構想3年 黄金たれカルビ</h3><div class="price">¥1,580</div></div></div>
+<div class="brow"><div class="photo" style="background-image:url('../images/umadare-harami.webp')"></div><div class="info"><span class="num">05</span><span class="badge best">BEST</span><h3>うまだれハラミ</h3><div class="price">¥1,280</div></div></div>
+<div class="brow flip"><div class="photo" style="background-image:url('../images/tsubosagari.webp')"></div><div class="info"><span class="num">06</span><span class="badge">SIGNATURE</span><h3>特製ダレ壺サガリ一本漬け</h3><div class="price">¥1,360</div></div></div>
+</div>
+<div class="footer">
+<div class="name">焼肉 和火焼 わびや</div>
+<div class="info"><span>東京都江東区白河3-9-16</span><span>菊川駅 徒歩5分</span><span>080-6576-5278</span></div>
+<div class="info"><span>ディナー（平日）18:00〜22:00 L.O.21:30</span><span>土日祝 17:00〜22:00</span></div>
+</div>
+</div></body></html>

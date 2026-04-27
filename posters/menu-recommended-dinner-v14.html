@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><title>v14 LP風ヒーロー+グリッド</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Kaisei+Tokumin:wght@500;700;800&family=Yuji+Syuku&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#0a0606;font-family:'Noto Sans JP',sans-serif}
+.poster{width:595px;height:842px;position:relative;overflow:hidden;background:#0a0606;color:#fff}
+/* ヒーロー（上部40%） */
+.hero{position:absolute;top:0;left:0;right:0;height:42%;background:url('../images/joukarubi.webp') center 40%/cover no-repeat;filter:saturate(1.15) contrast(1.05)}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.05) 30%,rgba(0,0,0,0.05) 50%,rgba(10,6,6,0.92) 95%,rgba(10,6,6,1) 100%)}
+.hero-overlay{position:absolute;top:0;left:0;right:0;height:42%;z-index:2;display:flex;flex-direction:column;justify-content:space-between;padding:30px 32px}
+.htop{display:flex;justify-content:space-between;align-items:center;color:#fff}
+.htop .pill{background:#b32a2a;color:#fff;padding:5px 16px;font-family:'Kaisei Tokumin',serif;font-size:11px;letter-spacing:0.4em;font-weight:700;box-shadow:1px 2px 0 #000}
+.htop .meta{font-family:'Kaisei Tokumin',serif;font-size:11px;letter-spacing:0.45em;color:#c5a55a}
+.hbottom{color:#fff;text-align:center}
+.hbottom .small{font-family:'Kaisei Tokumin',serif;font-size:13px;letter-spacing:0.55em;color:#c5a55a;margin-bottom:8px;font-weight:700}
+.hbottom h1{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:62px;font-weight:800;letter-spacing:0.06em;line-height:1;margin-bottom:8px;text-shadow:0 4px 24px rgba(0,0,0,0.85)}
+.hbottom h1 .em{color:#c5a55a}
+.hbottom .sub{font-family:'Shippori Mincho',serif;font-size:11px;letter-spacing:0.4em;color:rgba(255,255,255,0.75)}
+/* セクションタイトル */
+.section-label{position:absolute;top:42%;left:0;right:0;padding:14px 32px 8px;text-align:center;background:#0a0606;border-bottom:1px solid rgba(197,165,90,0.3);z-index:3}
+.section-label .l{font-family:'Kaisei Tokumin',serif;font-size:11px;letter-spacing:0.5em;color:#c5a55a;font-weight:700}
+/* 6品グリッド（3×2） */
+.menu-grid{position:absolute;top:calc(42% + 38px);left:24px;right:24px;bottom:90px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:6px;z-index:3}
+.lcard{display:flex;align-items:stretch;background:#0a0606;border:1px solid rgba(197,165,90,0.3);overflow:hidden}
+.lcard .photo{width:42%;background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(1.1) contrast(1.05) brightness(0.92);min-height:100px;flex-shrink:0}
+.lcard .info{flex:1;padding:9px 12px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.lcard .num{position:absolute;top:6px;right:8px;font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:13px;color:#c5a55a;font-weight:800;letter-spacing:0.05em;line-height:1}
+.lcard .badge{display:inline-block;background:rgba(197,165,90,0.15);color:#c5a55a;border:1px solid rgba(197,165,90,0.5);padding:1px 7px;font-family:'Kaisei Tokumin',serif;font-size:8.5px;letter-spacing:0.2em;font-weight:700;margin-bottom:4px;align-self:flex-start}
+.lcard .badge.feat{background:#b32a2a;color:#fff;border-color:#b32a2a}
+.lcard h3{font-family:'Shippori Mincho',serif;font-size:12px;font-weight:700;color:#fff;letter-spacing:0.03em;line-height:1.3;margin-bottom:4px;padding-right:18px}
+.lcard .price{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:18px;color:#c5a55a;font-weight:800;letter-spacing:0.02em}
+.footer{position:absolute;left:0;right:0;bottom:0;padding:14px 24px 16px;background:#000;border-top:2px solid #c5a55a;text-align:center;z-index:5}
+.footer .name{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:18px;letter-spacing:0.4em;color:#c5a55a;margin-bottom:4px;font-weight:800}
+.footer .info{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:rgba(255,255,255,0.6);line-height:1.7;letter-spacing:0.08em}
+.footer .info span{margin:0 5px}
+@media print{@page{size:A4 portrait;margin:0}body{background:#fff;display:block;min-height:auto}.poster{width:210mm;height:297mm}}
+</style></head><body>
+<div class="poster">
+<div class="hero"></div>
+<div class="hero-overlay">
+<div class="htop"><span class="pill">Tonight's Picks</span><span class="meta">DINNER · 2026.04</span></div>
+<div class="hbottom">
+<div class="small">— TONIGHT'S SIGNATURE —</div>
+<h1>Today's <span class="em">SIX</span></h1>
+<div class="sub">焼 肉 和 火 焼  わ び や</div>
+</div>
+</div>
+<div class="section-label">
+<div class="l">— SIX SIGNATURE PLATES —</div>
+</div>
+<div class="menu-grid">
+<div class="lcard"><div class="photo" style="background-image:url('../images/gyutan-bekkaku.webp')"></div><div class="info"><span class="num">01</span><span class="badge feat">FEATURED</span><h3>【別格】厚切り牛タン</h3><div class="price">¥1,980</div></div></div>
+<div class="lcard"><div class="photo" style="background-image:url('../images/joukarubi.webp')"></div><div class="info"><span class="num">02</span><span class="badge">SIGNATURE</span><h3>厳選 黒毛和牛 上カルビ</h3><div class="price">¥1,580</div></div></div>
+<div class="lcard"><div class="photo" style="background-image:url('../images/negishio-tsutsumi.webp')"></div><div class="info"><span class="num">03</span><span class="badge">SIGNATURE</span><h3>牛タンネギ塩包み</h3><div class="price">¥1,480</div></div></div>
+<div class="lcard"><div class="photo" style="background-image:url('../images/ogon-tare-karubi.webp')"></div><div class="info"><span class="num">04</span><span class="badge">SIGNATURE</span><h3>黄金たれ和牛カルビ</h3><div class="price">¥1,580</div></div></div>
+<div class="lcard"><div class="photo" style="background-image:url('../images/umadare-harami.webp')"></div><div class="info"><span class="num">05</span><span class="badge feat">BEST</span><h3>うまだれハラミ</h3><div class="price">¥1,280</div></div></div>
+<div class="lcard"><div class="photo" style="background-image:url('../images/tsubosagari.webp')"></div><div class="info"><span class="num">06</span><span class="badge">SIGNATURE</span><h3>特製ダレ壺サガリ</h3><div class="price">¥1,360</div></div></div>
+</div>
+<div class="footer">
+<div class="name">焼肉 和火焼 わびや</div>
+<div class="info"><span>東京都江東区白河3-9-16</span><span>菊川駅 徒歩5分</span><span>080-6576-5278</span></div>
+<div class="info"><span>ディナー（平日）18:00〜22:00 L.O.21:30</span><span>土日祝 17:00〜22:00</span></div>
+</div>
+</div></body></html>

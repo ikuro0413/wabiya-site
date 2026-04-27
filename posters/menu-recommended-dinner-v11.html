@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><title>v11 全画面シズル背景型</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Kaisei+Tokumin:wght@500;700;800&family=Yuji+Syuku&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{display:flex;justify-content:center;align-items:center;min-height:100vh;background:#0a0606;font-family:'Noto Sans JP',sans-serif}
+.poster{width:595px;height:842px;position:relative;overflow:hidden;background:#0a0606;color:#fff}
+/* 全画面背景写真 */
+.fullbg{position:absolute;inset:0;background:url('../images/joukarubi.webp') center 40%/cover no-repeat;filter:saturate(1.15) contrast(1.05) brightness(0.92)}
+.fullbg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.55) 0%,rgba(0,0,0,0.1) 25%,rgba(0,0,0,0.05) 45%,rgba(0,0,0,0.5) 65%,rgba(10,4,4,0.96) 88%,rgba(10,4,4,0.99) 100%)}
+/* 上部 */
+.head{position:absolute;top:0;left:0;right:0;padding:24px 30px;z-index:5;display:flex;justify-content:space-between;align-items:center}
+.head .pill{background:#b32a2a;color:#fff;padding:5px 16px;font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:13px;letter-spacing:0.3em;font-weight:800;box-shadow:2px 2px 0 #000;transform:rotate(-1.5deg)}
+.head .meta{font-family:'Kaisei Tokumin',serif;font-size:11px;letter-spacing:0.45em;color:#c5a55a;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,0.6)}
+/* 中央タイトル */
+.center-title{position:absolute;left:0;right:0;top:215px;text-align:center;z-index:4}
+.center-title .small{font-family:'Kaisei Tokumin',serif;font-size:13px;letter-spacing:0.55em;color:#f9c34a;font-weight:700;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,0.7)}
+.center-title h1{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:90px;font-weight:800;letter-spacing:0.08em;line-height:1;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,0.9),3px 3px 0 #b32a2a}
+.center-title .ribbon{display:inline-block;background:rgba(0,0,0,0.55);color:#fff;padding:6px 20px;margin-top:14px;font-family:'Shippori Mincho',serif;font-size:13px;letter-spacing:0.4em;border:1px solid #c5a55a}
+/* 6品リスト（下部、半透明オーバーレイ） */
+.menu-area{position:absolute;left:0;right:0;bottom:0;padding:16px 30px 110px;background:linear-gradient(to top,rgba(0,0,0,0.92),rgba(0,0,0,0.5) 70%,transparent 100%);z-index:4}
+.menu-label{text-align:center;font-family:'Kaisei Tokumin',serif;font-size:11px;letter-spacing:0.5em;color:#c5a55a;font-weight:700;margin-bottom:14px}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:24px;row-gap:6px}
+.mitem{display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid rgba(197,165,90,0.3)}
+.mitem .num{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:18px;color:#c5a55a;font-weight:800;line-height:1;flex-shrink:0;width:22px}
+.mitem .badge{font-family:'Kaisei Tokumin',serif;font-size:8px;color:#0a0606;background:#c5a55a;padding:1px 6px;letter-spacing:0.15em;font-weight:700;flex-shrink:0}
+.mitem .name{font-family:'Shippori Mincho',serif;font-size:13px;color:#fff;letter-spacing:0.04em;flex:1;line-height:1.3}
+.mitem .price{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:18px;color:#f9c34a;font-weight:800;letter-spacing:0.02em;white-space:nowrap}
+.footer{position:absolute;left:0;right:0;bottom:0;padding:14px 24px 16px;background:#000;border-top:2px solid #c5a55a;text-align:center;z-index:5}
+.footer .name{font-family:'Yuji Syuku','Shippori Mincho',serif;font-size:18px;letter-spacing:0.4em;color:#c5a55a;margin-bottom:4px;font-weight:800}
+.footer .info{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:rgba(255,255,255,0.6);line-height:1.7;letter-spacing:0.08em}
+.footer .info span{margin:0 5px}
+@media print{@page{size:A4 portrait;margin:0}body{background:#fff;display:block;min-height:auto}.poster{width:210mm;height:297mm}}
+</style></head><body>
+<div class="poster">
+<div class="fullbg"></div>
+<div class="head">
+<span class="pill">Tonight's Picks</span>
+<span class="meta">D I N N E R</span>
+</div>
+<div class="center-title">
+<div class="small">— SIGNATURE OF TONIGHT —</div>
+<h1>TONIGHT'S 6</h1>
+<div class="ribbon">焼 肉  和 火 焼  わ び や</div>
+</div>
+<div class="menu-area">
+<div class="menu-label">— TONIGHT'S 6 SIGNATURE —</div>
+<div class="menu-grid">
+<div class="mitem"><span class="num">01</span><span class="badge">FEATURED</span><span class="name">【別格】厚切り牛タン</span><span class="price">¥1,980</span></div>
+<div class="mitem"><span class="num">02</span><span class="badge">SIGNATURE</span><span class="name">黒毛和牛 上カルビ</span><span class="price">¥1,580</span></div>
+<div class="mitem"><span class="num">03</span><span class="badge">SIGNATURE</span><span class="name">牛タンネギ塩包み</span><span class="price">¥1,480</span></div>
+<div class="mitem"><span class="num">04</span><span class="badge">SIGNATURE</span><span class="name">黄金たれカルビ</span><span class="price">¥1,580</span></div>
+<div class="mitem"><span class="num">05</span><span class="badge">BEST</span><span class="name">うまだれハラミ</span><span class="price">¥1,280</span></div>
+<div class="mitem"><span class="num">06</span><span class="badge">SIGNATURE</span><span class="name">特製ダレ壺サガリ</span><span class="price">¥1,360</span></div>
+</div>
+</div>
+<div class="footer">
+<div class="name">焼肉 和火焼 わびや</div>
+<div class="info"><span>東京都江東区白河3-9-16</span><span>菊川駅 徒歩5分</span><span>080-6576-5278</span></div>
+<div class="info"><span>ディナー（平日）18:00〜22:00 L.O.21:30</span><span>土日祝 17:00〜22:00</span></div>
+</div>
+</div></body></html>

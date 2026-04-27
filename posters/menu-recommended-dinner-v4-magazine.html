@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや ディナーおすすめ v4 マガジン型</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;800&family=Zen+Old+Mincho:wght@400;500;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #d8cdb6;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    .poster {
+      width: 595px;
+      height: 842px;
+      position: relative;
+      overflow: hidden;
+      background: #f4ecd8;
+      color: #1a1410;
+    }
+
+    /* マガジンヘッダー */
+    .magheader {
+      padding: 28px 40px 14px;
+      border-bottom: 3px double #1a1410;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .magheader .left {
+      display: flex;
+      flex-direction: column;
+    }
+    .magheader .issue {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 0.5em;
+      color: #b32a2a;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .magheader h1 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      color: #1a1410;
+    }
+    .magheader h1 .red {
+      color: #b32a2a;
+    }
+    .magheader .right {
+      text-align: right;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: #6b5d3c;
+      line-height: 1.6;
+    }
+
+    /* リード文 */
+    .lead {
+      padding: 12px 40px 8px;
+      font-family: 'Shippori Mincho', serif;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: #4a3d28;
+      line-height: 1.7;
+      text-align: center;
+      border-bottom: 1px solid rgba(26,20,16,0.15);
+    }
+    .lead .em {
+      color: #b32a2a;
+      font-weight: 600;
+    }
+
+    /* メイン特集グリッド: 1 大 + 5 小 */
+    .grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 0;
+      height: 540px;
+      padding: 16px 32px;
+    }
+
+    /* 大カード（左、3行分） */
+    .card-hero {
+      grid-row: 1 / 4;
+      position: relative;
+      overflow: hidden;
+      margin-right: 14px;
+    }
+    .card-hero .photo {
+      width: 100%;
+      height: 100%;
+      background: url('../images/gyutan-bekkaku.webp') center 30% / cover no-repeat;
+      filter: brightness(0.9);
+    }
+    .card-hero .num {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 48px;
+      height: 48px;
+      background: #b32a2a;
+      color: #f4ecd8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 700;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .card-hero .info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 16px 14px;
+      background: linear-gradient(to top, rgba(15,10,5,0.95) 0%, rgba(15,10,5,0.7) 60%, transparent 100%);
+      color: #f4ecd8;
+    }
+    .card-hero .badge {
+      display: inline-block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 9px;
+      color: #fff;
+      background: #b32a2a;
+      padding: 2px 8px;
+      letter-spacing: 0.2em;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+    .card-hero h3 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .card-hero .desc {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 9.5px;
+      line-height: 1.6;
+      color: rgba(244,236,216,0.78);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .card-hero .price {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #c5a55a;
+      letter-spacing: 0.02em;
+    }
+    .card-hero .price .yen-small {
+      font-size: 11px;
+      opacity: 0.85;
+      margin-left: 2px;
+    }
+
+    /* 小カード（右、5枚を3行に: 上1, 中2, 下2 ではなく3行均等で5枚にしたいので別構造） */
+    .small-list {
+      grid-column: 2;
+      grid-row: 1 / 4;
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      gap: 6px;
+    }
+    .scard {
+      display: flex;
+      gap: 8px;
+      align-items: stretch;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      overflow: hidden;
+      padding: 4px 8px 4px 4px;
+    }
+    .scard .photo {
+      width: 70px;
+      flex-shrink: 0;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: brightness(0.92);
+    }
+    .scard .info {
+      flex: 1;
+      padding: 3px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+    .scard .num {
+      position: absolute;
+      top: 3px;
+      right: 4px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      color: #b32a2a;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+    .scard .badge {
+      display: inline-block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 7.5px;
+      color: #b32a2a;
+      letter-spacing: 0.2em;
+      margin-bottom: 2px;
+      font-weight: 700;
+    }
+    .scard h4 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #1a1410;
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+      margin-bottom: 3px;
+      padding-right: 14px;
+    }
+    .scard .price {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1410;
+      letter-spacing: 0.02em;
+    }
+
+    /* フッター */
+    .footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 14px 32px 18px;
+      text-align: center;
+      background: #1a1410;
+      color: #f4ecd8;
+    }
+    .footer .name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 14px;
+      letter-spacing: 0.35em;
+      color: #c5a55a;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+    .footer .info {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 8.5px;
+      color: rgba(244,236,216,0.7);
+      line-height: 1.7;
+      letter-spacing: 0.08em;
+    }
+    .footer .info span { margin: 0 5px; }
+
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+      body { background: #fff; display: block; min-height: auto; }
+      .poster { width: 210mm; height: 297mm; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+
+  <div class="magheader">
+    <div class="left">
+      <span class="issue">Wabiya Dinner — vol.01</span>
+      <h1>本日の<span class="red">名物</span>六選</h1>
+    </div>
+    <div class="right">
+      <div>2026 / 04</div>
+      <div>SPECIAL FEATURE</div>
+    </div>
+  </div>
+
+  <div class="lead">
+    清澄白河の隠れ家焼肉、<span class="em">わびや</span>から
+    今夜お薦めしたい<span class="em">六品</span>。<br>
+    厚切り牛タンと黒毛和牛、職人の味をご堪能下さい。
+  </div>
+
+  <div class="grid">
+    <div class="card-hero">
+      <div class="photo"></div>
+      <div class="num">01</div>
+      <div class="info">
+        <span class="badge">看板</span>
+        <h3>【別格】厚切り牛タン</h3>
+        <p class="desc">わびや自慢の極厚カット。ネギ塩とカットレモンで味わう至高の一品。</p>
+        <span class="price">¥1,980<span class="yen-small">税込</span></span>
+      </div>
+    </div>
+
+    <div class="small-list">
+      <div class="scard">
+        <div class="photo" style="background-image:url('../images/joukarubi.webp');"></div>
+        <div class="info">
+          <span class="num">02</span>
+          <span class="badge">名 物</span>
+          <h4>厳選 黒毛和牛 上カルビ</h4>
+          <span class="price">¥1,580</span>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="photo" style="background-image:url('../images/negishio-tsutsumi.webp');"></div>
+        <div class="info">
+          <span class="num">03</span>
+          <span class="badge">名 物</span>
+          <h4>牛タンネギ塩包み</h4>
+          <span class="price">¥1,480</span>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="photo" style="background-image:url('../images/ogon-tare-karubi.webp');"></div>
+        <div class="info">
+          <span class="num">04</span>
+          <span class="badge">名 物</span>
+          <h4>黄金たれ黒毛和牛カルビ</h4>
+          <span class="price">¥1,580</span>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="photo" style="background-image:url('../images/umadare-harami.webp');"></div>
+        <div class="info">
+          <span class="num">05</span>
+          <span class="badge">人 気 1 位</span>
+          <h4>うまだれハラミ</h4>
+          <span class="price">¥1,280</span>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="photo" style="background-image:url('../images/tsubosagari.webp');"></div>
+        <div class="info">
+          <span class="num">06</span>
+          <span class="badge">名 物</span>
+          <h4>特製ダレ壺サガリ</h4>
+          <span class="price">¥1,360</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="name">焼 肉  和 火 焼  わ び や</div>
+    <div class="info">
+      <span>東京都江東区白河3-9-16</span><span>菊川駅 徒歩5分</span><span>080-6576-5278</span>
+    </div>
+    <div class="info">
+      <span>ディナー（平日）18:00〜22:00 L.O.21:30</span><span>土日祝 17:00〜22:00</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

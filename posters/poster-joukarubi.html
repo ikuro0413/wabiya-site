@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや 上カルビ看板ポスター</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .poster {
+      width: 594px;
+      height: 841px;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Zen Old Mincho', serif;
+      color: #fff;
+    }
+
+    .bg-photo {
+      position: absolute;
+      inset: 0;
+      background-color: #0a0806;
+      background-image: url('../images/joukarubi.jpg');
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,0.30) 0%,
+          rgba(0,0,0,0.10) 18%,
+          rgba(0,0,0,0.05) 38%,
+          rgba(0,0,0,0.20) 58%,
+          rgba(0,0,0,0.78) 80%,
+          rgba(0,0,0,0.95) 100%
+        );
+    }
+
+    .content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0 44px 34px;
+    }
+
+    .area-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.5em;
+      color: #c5a55a;
+      margin-bottom: 6px;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .category {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 78px;
+      font-weight: 500;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 14px;
+      letter-spacing: 0.08em;
+      text-shadow: 0 3px 25px rgba(0,0,0,0.75), 0 0 50px rgba(0,0,0,0.4);
+    }
+
+    .divider {
+      width: 44px;
+      height: 1px;
+      background: #c5a55a;
+      opacity: 0.7;
+      margin-bottom: 14px;
+    }
+
+    .menu-name {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+    }
+
+    .menu-tag {
+      display: inline-block;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 9px;
+      color: #c5a55a;
+      border: 1px solid rgba(197,165,90,0.6);
+      padding: 2px 8px;
+      margin-left: 10px;
+      letter-spacing: 0.18em;
+      vertical-align: middle;
+      font-weight: 400;
+    }
+
+    .menu-desc {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.85;
+      margin-bottom: 12px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+    }
+
+    .price {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #c5a55a;
+      margin-bottom: 16px;
+      letter-spacing: 0.03em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .price .yen-small {
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      margin-left: 4px;
+      opacity: 0.85;
+    }
+
+    .features {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.16em;
+      margin-bottom: 14px;
+      font-weight: 300;
+    }
+
+    .shop-name {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 14px;
+      color: #c5a55a;
+      letter-spacing: 0.35em;
+      opacity: 0.85;
+    }
+
+    .top-label {
+      position: absolute;
+      top: 28px;
+      left: 44px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .top-label span.en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      color: #c5a55a;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.8);
+    }
+    .top-label span.bar {
+      width: 26px;
+      height: 1px;
+      background: #c5a55a;
+      opacity: 0.6;
+    }
+    .top-label span.jp {
+      font-family: 'Zen Old Mincho', serif;
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
+      text-shadow: 0 1px 10px rgba(0,0,0,0.8);
+    }
+
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+      body { background: #fff; }
+      .poster { width: 210mm; height: 297mm; }
+      .category { font-size: 200px; letter-spacing: 0.1em; }
+      .menu-name { font-size: 64px; letter-spacing: 0.05em; }
+      .menu-tag { font-size: 22px; padding: 4px 18px; margin-left: 24px; }
+      .price { font-size: 70px; }
+      .price .yen-small { font-size: 36px; }
+      .menu-desc { font-size: 28px; line-height: 1.85; }
+      .features { font-size: 26px; letter-spacing: 0.18em; }
+      .area-label { font-size: 30px; }
+      .shop-name { font-size: 32px; letter-spacing: 0.4em; }
+      .content { padding: 0 110px 80px; }
+      .divider { width: 110px; height: 2px; margin-bottom: 36px; }
+      .top-label span.en { font-size: 26px; }
+      .top-label span.bar { width: 60px; }
+      .top-label span.jp { font-size: 26px; }
+      .top-label { top: 60px; left: 110px; gap: 26px; }
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #222;
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="bg-photo"></div>
+  <div class="overlay"></div>
+
+  <div class="top-label">
+    <span class="en">Premium Wagyu</span>
+    <span class="bar"></span>
+    <span class="jp">厳選黒毛和牛</span>
+  </div>
+
+  <div class="content">
+    <div class="area-label">清 澄 白 河</div>
+    <div class="category">上カルビ</div>
+    <div class="divider"></div>
+    <div class="menu-name">厳選 黒毛和牛 上カルビ<span class="menu-tag">名物</span></div>
+    <div class="menu-desc">A4・A5ランクの黒毛和牛をリーズナブルに。<br>とろける旨味と、深いコクの一皿。</div>
+    <div class="price">¥1,580<span class="yen-small">（税込）</span></div>
+    <div class="features">個室あり ｜ ランチ営業中 ｜ テイクアウトOK</div>
+    <div class="shop-name">焼肉 和火焼 わびや</div>
+  </div>
+</div>
+
+</body>
+</html>

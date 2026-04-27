@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや ディナーおすすめ v6 アールデコ型</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #1a1410;
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .poster {
+      width: 595px;
+      height: 842px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 0%, #2a2018 0%, #0e0805 80%),
+        #0e0805;
+      color: #f4ecd8;
+    }
+
+    /* 装飾外枠 */
+    .frame {
+      position: absolute;
+      inset: 22px;
+      border: 1px solid rgba(197,165,90,0.5);
+      pointer-events: none;
+    }
+    .frame::before, .frame::after {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(197,165,90,0.25);
+      pointer-events: none;
+    }
+
+    /* 四隅の装飾 */
+    .corner {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #c5a55a;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .corner.tl { top: 30px; left: 30px; border-right: none; border-bottom: none; }
+    .corner.tr { top: 30px; right: 30px; border-left: none; border-bottom: none; }
+    .corner.bl { bottom: 30px; left: 30px; border-right: none; border-top: none; }
+    .corner.br { bottom: 30px; right: 30px; border-left: none; border-top: none; }
+
+    /* ヘッダーオーナメント */
+    .ornament {
+      position: absolute;
+      top: 56px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 2;
+    }
+    .ornament .line {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #c5a55a, transparent);
+    }
+    .ornament .diamond {
+      width: 8px;
+      height: 8px;
+      background: #c5a55a;
+      transform: rotate(45deg);
+    }
+
+    /* メインタイトル */
+    .title-wrap {
+      position: absolute;
+      top: 90px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 2;
+    }
+    .title-wrap .en {
+      font-family: 'Cinzel', serif;
+      font-size: 13px;
+      letter-spacing: 0.6em;
+      color: #c5a55a;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .title-wrap .jp {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 38px;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      color: #f4ecd8;
+      margin-bottom: 10px;
+    }
+    .title-wrap .sub {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.45em;
+      color: rgba(244,236,216,0.6);
+      text-transform: uppercase;
+    }
+
+    /* 中央装飾セパレータ */
+    .separator {
+      position: absolute;
+      top: 220px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      z-index: 2;
+    }
+    .separator .line {
+      width: 80px;
+      height: 1px;
+      background: #c5a55a;
+      opacity: 0.6;
+    }
+    .separator .star {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      color: #c5a55a;
+      letter-spacing: 0;
+    }
+
+    /* メニューリスト（カード型・金枠） */
+    .menu-cards {
+      position: absolute;
+      top: 260px;
+      left: 50px;
+      right: 50px;
+      bottom: 130px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      z-index: 2;
+    }
+
+    .ad-card {
+      border: 1px solid rgba(197,165,90,0.4);
+      padding: 12px 14px;
+      background: linear-gradient(135deg, rgba(197,165,90,0.04), rgba(0,0,0,0.4));
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .ad-card::before {
+      content: '';
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      right: 4px;
+      bottom: 4px;
+      border: 1px solid rgba(197,165,90,0.15);
+      pointer-events: none;
+    }
+    .ad-card .photo {
+      width: 100%;
+      height: 86px;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: brightness(0.85) sepia(0.1);
+      margin-bottom: 8px;
+    }
+    .ad-card .num {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      color: #c5a55a;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      background: rgba(0,0,0,0.6);
+      padding: 2px 6px;
+      z-index: 2;
+    }
+    .ad-card h3 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #f4ecd8;
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .ad-card .deco-line {
+      width: 30px;
+      height: 1px;
+      background: #c5a55a;
+      opacity: 0.6;
+      margin: 0 auto 6px;
+    }
+    .ad-card .price {
+      font-family: 'Cinzel', serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #c5a55a;
+      letter-spacing: 0.05em;
+      text-align: center;
+    }
+
+    /* フッター */
+    .footer {
+      position: absolute;
+      left: 30px;
+      right: 30px;
+      bottom: 30px;
+      padding: 12px 20px 14px;
+      text-align: center;
+      z-index: 2;
+      border-top: 1px solid rgba(197,165,90,0.4);
+    }
+    .footer .name {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      letter-spacing: 0.5em;
+      color: #c5a55a;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .footer .jp-name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      color: rgba(244,236,216,0.7);
+      margin-bottom: 6px;
+    }
+    .footer .info {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 8px;
+      color: rgba(244,236,216,0.55);
+      line-height: 1.7;
+      letter-spacing: 0.08em;
+    }
+    .footer .info span { margin: 0 4px; }
+
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+      body { background: #fff; display: block; min-height: auto; }
+      .poster { width: 210mm; height: 297mm; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+
+  <div class="frame"></div>
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="ornament">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
+  </div>
+
+  <div class="title-wrap">
+    <div class="en">Tonight's Selection</div>
+    <div class="jp">本日のおすすめ</div>
+    <div class="sub">— Six Signature Plates —</div>
+  </div>
+
+  <div class="separator">
+    <span class="line"></span>
+    <span class="star">✦</span>
+    <span class="line"></span>
+  </div>
+
+  <div class="menu-cards">
+
+    <div class="ad-card">
+      <div class="num">I</div>
+      <div class="photo" style="background-image:url('../images/gyutan-bekkaku.webp');"></div>
+      <h3>【別格】厚切り牛タン</h3>
+      <div class="deco-line"></div>
+      <div class="price">¥1,980</div>
+    </div>
+
+    <div class="ad-card">
+      <div class="num">II</div>
+      <div class="photo" style="background-image:url('../images/joukarubi.webp');"></div>
+      <h3>厳選 黒毛和牛 上カルビ</h3>
+      <div class="deco-line"></div>
+      <div class="price">¥1,580</div>
+    </div>
+
+    <div class="ad-card">
+      <div class="num">III</div>
+      <div class="photo" style="background-image:url('../images/negishio-tsutsumi.webp');"></div>
+      <h3>牛タンネギ塩包み</h3>
+      <div class="deco-line"></div>
+      <div class="price">¥1,480</div>
+    </div>
+
+    <div class="ad-card">
+      <div class="num">IV</div>
+      <div class="photo" style="background-image:url('../images/ogon-tare-karubi.webp');"></div>
+      <h3>黄金たれ黒毛和牛カルビ</h3>
+      <div class="deco-line"></div>
+      <div class="price">¥1,580</div>
+    </div>
+
+    <div class="ad-card">
+      <div class="num">V</div>
+      <div class="photo" style="background-image:url('../images/umadare-harami.webp');"></div>
+      <h3>うまだれハラミ</h3>
+      <div class="deco-line"></div>
+      <div class="price">¥1,280</div>
+    </div>
+
+    <div class="ad-card">
+      <div class="num">VI</div>
+      <div class="photo" style="background-image:url('../images/tsubosagari.webp');"></div>
+      <h3>特製ダレ壺サガリ一本漬け</h3>
+      <div class="deco-line"></div>
+      <div class="price">¥1,360</div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="name">WABIYA</div>
+    <div class="jp-name">焼 肉  和 火 焼</div>
+    <div class="info">
+      <span>東京都江東区白河3-9-16</span><span>菊川駅 徒歩5分</span><span>080-6576-5278</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

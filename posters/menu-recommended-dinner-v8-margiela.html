@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや ディナーおすすめ v8 マルジェラ・ミニマル</title>
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue&family=Inter:wght@200;300;400;500;700&family=Shippori+Mincho:wght@400;500;600&family=Noto+Sans+JP:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #d4d4d4;
+      font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    }
+
+    .poster {
+      width: 595px;
+      height: 842px;
+      position: relative;
+      overflow: hidden;
+      background: #fafaf6;
+      color: #1a1a1a;
+    }
+
+    /* ナンバリング (左上) */
+    .stamp {
+      position: absolute;
+      top: 36px;
+      left: 36px;
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: #1a1a1a;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+    .stamp .label {
+      color: rgba(26,26,26,0.5);
+    }
+
+    /* 番号（マルジェラ風 0-23） */
+    .numbers {
+      position: absolute;
+      top: 36px;
+      right: 36px;
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: rgba(26,26,26,0.45);
+      text-align: right;
+      line-height: 1.9;
+    }
+    .numbers .active {
+      color: #1a1a1a;
+      font-weight: 500;
+      text-decoration: line-through;
+    }
+
+    /* ジャイアント番号 06 */
+    .big-num {
+      position: absolute;
+      top: 90px;
+      right: 36px;
+      font-family: 'Inter', sans-serif;
+      font-size: 220px;
+      font-weight: 200;
+      letter-spacing: -0.05em;
+      line-height: 0.85;
+      color: #1a1a1a;
+    }
+    .big-num .small {
+      font-size: 0.18em;
+      letter-spacing: 0.45em;
+      vertical-align: top;
+      display: block;
+      margin-top: 8px;
+      font-weight: 400;
+    }
+
+    /* メインタイトル（左中） */
+    .title {
+      position: absolute;
+      top: 120px;
+      left: 36px;
+      max-width: 270px;
+    }
+    .title .super {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.5em;
+      color: rgba(26,26,26,0.5);
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+    .title h1 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 44px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      color: #1a1a1a;
+      margin-bottom: 18px;
+    }
+    .title h1 .em {
+      font-style: italic;
+      font-weight: 300;
+      font-size: 0.55em;
+      letter-spacing: 0.15em;
+      display: block;
+      margin-top: 8px;
+      color: rgba(26,26,26,0.6);
+    }
+
+    /* 1点だけ写真 (中央 やや右寄り) */
+    .hero-photo {
+      position: absolute;
+      top: 320px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 380px;
+      height: 200px;
+      background: url('../images/joukarubi.webp') center 40% / cover no-repeat;
+      filter: grayscale(0.15) brightness(0.95);
+    }
+    .hero-photo::after {
+      content: '01';
+      position: absolute;
+      bottom: -22px;
+      left: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: rgba(26,26,26,0.5);
+    }
+
+    /* メニューリスト (下部、左寄せ、極小) */
+    .menu {
+      position: absolute;
+      bottom: 130px;
+      left: 36px;
+      right: 36px;
+    }
+    .menu .heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .menu .heading .l {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .menu .heading .r {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.3em;
+      color: rgba(26,26,26,0.5);
+      text-transform: uppercase;
+    }
+
+    .menu-rows {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 36px;
+      row-gap: 4px;
+    }
+    .row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 4px 0;
+    }
+    .row .num {
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: rgba(26,26,26,0.5);
+      width: 18px;
+      flex-shrink: 0;
+    }
+    .row .name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 11px;
+      color: #1a1a1a;
+      letter-spacing: 0.02em;
+      flex: 1;
+      line-height: 1.5;
+    }
+    .row .price {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: #1a1a1a;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+
+    /* フッター */
+    .footer {
+      position: absolute;
+      left: 36px;
+      right: 36px;
+      bottom: 30px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(26,26,26,0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .footer .name {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: #1a1a1a;
+      font-weight: 500;
+    }
+    .footer .info {
+      font-family: 'Inter', sans-serif;
+      font-size: 8px;
+      color: rgba(26,26,26,0.6);
+      line-height: 1.7;
+      letter-spacing: 0.1em;
+      text-align: right;
+    }
+
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+      body { background: #fff; display: block; min-height: auto; }
+      .poster { width: 210mm; height: 297mm; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+
+  <div class="stamp">
+    <div><span class="label">MAISON</span> &nbsp; WABIYA</div>
+    <div><span class="label">CATEGORY</span> &nbsp; DINNER · 06</div>
+    <div><span class="label">DATE</span> &nbsp; 04.2026</div>
+  </div>
+
+  <div class="numbers">
+    01<br>02<br>03<br>04<br>05<br>
+    <span class="active">06</span><br>
+    07<br>...
+  </div>
+
+  <div class="big-num">06<span class="small">SIX&nbsp;SELECTED</span></div>
+
+  <div class="title">
+    <div class="super">CATEGORY · 06 — DINNER</div>
+    <h1>本日の<br>おすすめ
+      <span class="em">six selected plates</span>
+    </h1>
+  </div>
+
+  <div class="hero-photo"></div>
+
+  <div class="menu">
+    <div class="heading">
+      <span class="l">— Selected Six —</span>
+      <span class="r">Tonight's Tasting</span>
+    </div>
+    <div class="menu-rows">
+      <div class="row">
+        <span class="num">01</span>
+        <span class="name">【別格】厚切り牛タン</span>
+        <span class="price">¥1,980</span>
+      </div>
+      <div class="row">
+        <span class="num">02</span>
+        <span class="name">黒毛和牛 上カルビ</span>
+        <span class="price">¥1,580</span>
+      </div>
+      <div class="row">
+        <span class="num">03</span>
+        <span class="name">牛タンネギ塩包み</span>
+        <span class="price">¥1,480</span>
+      </div>
+      <div class="row">
+        <span class="num">04</span>
+        <span class="name">黄金たれカルビ</span>
+        <span class="price">¥1,580</span>
+      </div>
+      <div class="row">
+        <span class="num">05</span>
+        <span class="name">うまだれハラミ</span>
+        <span class="price">¥1,280</span>
+      </div>
+      <div class="row">
+        <span class="num">06</span>
+        <span class="name">特製ダレ壺サガリ</span>
+        <span class="price">¥1,360</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="name">焼 肉  和 火 焼  わ び や</div>
+    <div class="info">
+      東京都江東区白河3-9-16<br>
+      080-6576-5278 / 菊川駅 徒歩5分
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

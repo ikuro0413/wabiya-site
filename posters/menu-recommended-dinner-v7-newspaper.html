@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや ディナーおすすめ v7 ヴィンテージ新聞型</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Shippori+Mincho:wght@500;600;700;800&family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #c4b594;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .poster {
+      width: 595px;
+      height: 842px;
+      position: relative;
+      overflow: hidden;
+      background: #efe4cb;
+      color: #2a1f12;
+    }
+
+    /* 紙テクスチャ */
+    .poster::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg, transparent 0, transparent 1.5px, rgba(80,55,30,0.025) 1.5px, rgba(80,55,30,0.025) 2px),
+        radial-gradient(ellipse at 30% 20%, rgba(150,100,50,0.06), transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(100,60,30,0.08), transparent 50%);
+      pointer-events: none;
+    }
+
+    /* マストヘッド */
+    .masthead {
+      padding: 28px 36px 14px;
+      text-align: center;
+      border-bottom: 5px solid #2a1f12;
+      position: relative;
+    }
+    .masthead::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #2a1f12;
+    }
+    .masthead .pub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: #6b4d28;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .masthead h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      color: #2a1f12;
+      margin-bottom: 6px;
+    }
+    .masthead h1 .it {
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.6em;
+      color: #6b4d28;
+      vertical-align: 0.25em;
+      margin: 0 6px;
+    }
+    .masthead .meta {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: #6b4d28;
+      display: flex;
+      justify-content: space-between;
+      max-width: 460px;
+      margin: 8px auto 0;
+      text-transform: uppercase;
+    }
+
+    /* ヘッドライン */
+    .headline {
+      padding: 22px 36px 10px;
+      text-align: center;
+      border-bottom: 1px solid #2a1f12;
+    }
+    .headline .kicker {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: #b53a2e;
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+    .headline h2 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 34px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      color: #2a1f12;
+      margin-bottom: 6px;
+    }
+    .headline .lead {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 10px;
+      color: #4a3422;
+      letter-spacing: 0.05em;
+      line-height: 1.7;
+      max-width: 460px;
+      margin: 6px auto 0;
+    }
+
+    /* 6品グリッド（新聞コラム風） */
+    .columns {
+      padding: 14px 36px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 24px;
+    }
+    .col-item {
+      display: flex;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(42,31,18,0.35);
+    }
+    .col-item .photo {
+      width: 65px;
+      height: 65px;
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      filter: sepia(0.4) brightness(0.92) contrast(1.05);
+      flex-shrink: 0;
+      border: 1px solid rgba(42,31,18,0.4);
+    }
+    .col-item .info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .col-item .roman {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #b53a2e;
+      letter-spacing: 0.15em;
+      margin-bottom: 2px;
+    }
+    .col-item h4 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #2a1f12;
+      letter-spacing: 0.03em;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+    .col-item .price {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #2a1f12;
+      letter-spacing: 0.02em;
+    }
+
+    /* 装飾 */
+    .ribbon {
+      position: absolute;
+      top: 250px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: #b53a2e;
+      font-style: italic;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    /* フッター */
+    .footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 14px 36px 18px;
+      text-align: center;
+      border-top: 5px double #2a1f12;
+      background: #efe4cb;
+    }
+    .footer .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.5em;
+      color: #2a1f12;
+      margin-bottom: 4px;
+    }
+    .footer .info {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 8.5px;
+      color: #4a3422;
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+    }
+    .footer .info span { margin: 0 5px; }
+
+    @media print {
+      @page { size: A4 portrait; margin: 0; }
+      body { background: #fff; display: block; min-height: auto; }
+      .poster { width: 210mm; height: 297mm; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+
+  <div class="masthead">
+    <div class="pub">Established · Sumida · Yakiniku House</div>
+    <h1>WABIYA<span class="it">— the —</span>TIMES</h1>
+    <div class="meta">
+      <span>Vol. 1 · No. 1</span>
+      <span>2026 · April · Special Issue</span>
+      <span>Dinner Edition</span>
+    </div>
+  </div>
+
+  <div class="headline">
+    <div class="kicker">— Tonight's Recommendation —</div>
+    <h2>本日の名物 六品</h2>
+    <p class="lead">清澄白河の隠れ家焼肉「わびや」が選ぶ、今夜の自信作。<br>厚切り牛タンと厳選黒毛和牛、職人の一皿をご堪能下さい。</p>
+  </div>
+
+  <div class="ribbon">— DINNER MENU SELECTION —</div>
+
+  <div class="columns" style="margin-top: 28px;">
+
+    <div class="col-item">
+      <div class="photo" style="background-image:url('../images/gyutan-bekkaku.webp');"></div>
+      <div class="info">
+        <div class="roman">No. I — SIGNATURE</div>
+        <h4>【別格】厚切り牛タン</h4>
+        <div class="price">¥1,980</div>
+      </div>
+    </div>
+
+    <div class="col-item">
+      <div class="photo" style="background-image:url('../images/joukarubi.webp');"></div>
+      <div class="info">
+        <div class="roman">No. II — WAGYU</div>
+        <h4>厳選 黒毛和牛 上カルビ</h4>
+        <div class="price">¥1,580</div>
+      </div>
+    </div>
+
+    <div class="col-item">
+      <div class="photo" style="background-image:url('../images/negishio-tsutsumi.webp');"></div>
+      <div class="info">
+        <div class="roman">No. III — TONGUE</div>
+        <h4>牛タンネギ塩包み</h4>
+        <div class="price">¥1,480</div>
+      </div>
+    </div>
+
+    <div class="col-item">
+      <div class="photo" style="background-image:url('../images/ogon-tare-karubi.webp');"></div>
+      <div class="info">
+        <div class="roman">No. IV — KALBI</div>
+        <h4>黄金たれ黒毛和牛カルビ</h4>
+        <div class="price">¥1,580</div>
+      </div>
+    </div>
+
+    <div class="col-item">
+      <div class="photo" style="background-image:url('../images/umadare-harami.webp');"></div>
+      <div class="info">
+        <div class="roman">No. V — POPULAR</div>
+        <h4>うまだれハラミ</h4>
+        <div class="price">¥1,280</div>
+      </div>
+    </div>
+
+    <div class="col-item">
+      <div class="photo" style="background-image:url('../images/tsubosagari.webp');"></div>
+      <div class="info">
+        <div class="roman">No. VI — SAGARI</div>
+        <h4>特製ダレ壺サガリ</h4>
+        <div class="price">¥1,360</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="name">WABIYA</div>
+    <div class="info">
+      <span>東京都江東区白河3-9-16</span><span>菊川駅 徒歩5分</span><span>080-6576-5278</span>
+    </div>
+    <div class="info">
+      <span>Dinner (Mon-Fri) 18:00–22:00 L.O.21:30</span><span>Sat-Sun 17:00–22:00</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わびや 冷麺ポスター v2 - Midnight Summer Chill</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@200;400;700&family=Zen+Old+Mincho:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @page { size: A4 portrait; margin: 0; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #050a14;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .poster {
+      width: 595px;
+      height: 842px;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 30%, #14283f 0%, #0a1525 45%, #050a14 100%);
+      font-family: 'Shippori Mincho', 'Zen Old Mincho', serif;
+      color: #f5f0e6;
+    }
+
+    /* 上部の青のかすみ + ノイズ */
+    .bg-mist {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 600px 200px at 50% 0%, rgba(45,180,200,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 400px 400px at 100% 100%, rgba(45,180,200,0.08) 0%, transparent 60%),
+        repeating-linear-gradient(45deg, transparent 0, transparent 2px, rgba(212,184,122,0.015) 2px, rgba(212,184,122,0.015) 3px);
+      pointer-events: none;
+    }
+
+    /* 結露ドット（微細） */
+    .dew {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    /* 氷の破片 - シャンパンゴールド幾何ライン */
+    .ice-shards {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    /* 角飾り */
+    .corner {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border: 1px solid #d4b87a;
+      opacity: 0.5;
+    }
+    .corner.tl { top: 22px; left: 22px; border-right: none; border-bottom: none; }
+    .corner.tr { top: 22px; right: 22px; border-left: none; border-bottom: none; }
+    .corner.bl { bottom: 22px; left: 22px; border-right: none; border-top: none; }
+    .corner.br { bottom: 22px; right: 22px; border-left: none; border-top: none; }
+
+    /* 縦に「涼」を画面右に大書き（半透明） */
+    .kanji-bg {
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      transform: translateY(-50%);
+      font-family: 'Zen Old Mincho', serif;
+      font-weight: 900;
+      font-size: 380px;
+      line-height: 0.85;
+      color: rgba(212,184,122,0.08);
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      z-index: 1;
+      writing-mode: vertical-rl;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      padding: 56px 44px 50px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 上部: ブランドラベル */
+    .top-label {
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .top-label .en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 0.65em;
+      color: #2dd4bf;
+      font-weight: 300;
+      text-transform: uppercase;
+      padding-bottom: 6px;
+    }
+    .top-label .accent-line {
+      width: 30px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4b87a, transparent);
+      margin: 0 auto 10px;
+    }
+    .top-label .jp {
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 200;
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      color: #f5f0e6;
+      opacity: 0.85;
+    }
+
+    /* メインタイトル */
+    .hero {
+      text-align: center;
+      margin-top: 18px;
+      margin-bottom: 12px;
+    }
+    .hero .lead {
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 200;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      color: rgba(245,240,230,0.7);
+      margin-bottom: 14px;
+    }
+    .hero h1 {
+      font-family: 'Zen Old Mincho', serif;
+      font-weight: 200;
+      font-size: 56px;
+      letter-spacing: 0.12em;
+      line-height: 1.05;
+      color: #f5f0e6;
+      margin-bottom: 4px;
+    }
+    .hero h1 .accent {
+      color: #d4b87a;
+      font-weight: 700;
+    }
+    .hero h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 16px;
+      letter-spacing: 0.45em;
+      color: rgba(45,212,191,0.85);
+      margin-top: 8px;
+    }
+
+    /* 写真エリア */
+    .photo-wrap {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      margin: 14px auto 18px;
+    }
+    .photo-circle {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(212,184,122,0.4);
+      box-shadow:
+        0 0 80px rgba(45,212,191,0.18),
+        0 0 0 6px rgba(20,40,63,0.5),
+        0 0 0 7px rgba(212,184,122,0.15);
+      background:
+        radial-gradient(circle at 50% 40%, rgba(255,255,255,0.06), transparent 60%),
+        #0a1525;
+    }
+    .photo-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(1.05) saturate(1.15) hue-rotate(-3deg) contrast(1.04);
+    }
+    /* 写真の縁に青のリム */
+    .photo-circle::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      box-shadow: inset 0 0 50px rgba(15,30,50,0.5), inset 0 0 100px rgba(45,180,200,0.12);
+      pointer-events: none;
+    }
+
+    /* 写真の周りの氷の破片 */
+    .shard {
+      position: absolute;
+      background: linear-gradient(135deg, #d4b87a, transparent 70%);
+      opacity: 0.55;
+      transform-origin: center;
+    }
+    .shard-1 { top: 8%; left: -10px; width: 50px; height: 1px; transform: rotate(-15deg); }
+    .shard-2 { top: 22%; right: -20px; width: 70px; height: 1px; transform: rotate(20deg); background: linear-gradient(135deg, transparent, #2dd4bf, transparent); opacity: 0.4; }
+    .shard-3 { bottom: 8%; left: -25px; width: 60px; height: 1px; transform: rotate(10deg); }
+    .shard-4 { bottom: 25%; right: -10px; width: 45px; height: 1px; transform: rotate(-22deg); background: linear-gradient(135deg, transparent, #d4b87a); }
+
+    /* 水滴 */
+    .drop {
+      position: absolute;
+      background: radial-gradient(circle at 30% 30%, #d4ecf0, #6aa8b3 60%, #2d6776);
+      border-radius: 50% 50% 50% 0;
+      opacity: 0.45;
+      transform: rotate(-45deg);
+      box-shadow: inset -1px -2px 3px rgba(0,0,0,0.3);
+    }
+
+    /* キャプション */
+    .caption {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .caption p {
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 200;
+      font-size: 12px;
+      line-height: 1.9;
+      letter-spacing: 0.18em;
+      color: rgba(245,240,230,0.78);
+    }
+    .caption p strong {
+      color: #d4b87a;
+      font-weight: 400;
+    }
+
+    /* 価格バー */
+    .price-bar {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      gap: 12px;
+      margin: 6px 0 18px;
+    }
+    .price-bar .line {
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4b87a 50%, transparent);
+    }
+    .price {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      color: #d4b87a;
+      font-size: 32px;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .price .tax {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      margin-left: 6px;
+      color: rgba(212,184,122,0.7);
+    }
+
+    /* ボトム情報 */
+    .bottom-info {
+      text-align: center;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+    .bottom-info .availability {
+      font-family: 'Shippori Mincho', serif;
+      font-weight: 200;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      color: rgba(245,240,230,0.7);
+      margin-bottom: 14px;
+    }
+    .gold-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d4b87a, transparent);
+      margin: 12px auto;
+    }
+    .brand {
+      font-family: 'Zen Old Mincho', serif;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0.5em;
+      color: #d4b87a;
+      margin-top: 4px;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .poster { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="bg-mist"></div>
+
+  <!-- 結露ドット (SVG) -->
+  <svg class="dew" viewBox="0 0 595 842" preserveAspectRatio="none">
+    <defs>
+      <radialGradient id="dewG" cx="0.4" cy="0.4" r="0.6">
+        <stop offset="0%" stop-color="#d4ecf0" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#6aa8b3" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <!-- ランダムに微細ドット散布 -->
+    <circle cx="80" cy="120" r="2" fill="url(#dewG)"/>
+    <circle cx="510" cy="80" r="1.5" fill="url(#dewG)"/>
+    <circle cx="540" cy="220" r="2.2" fill="url(#dewG)"/>
+    <circle cx="60" cy="300" r="1.2" fill="url(#dewG)"/>
+    <circle cx="520" cy="450" r="1.8" fill="url(#dewG)"/>
+    <circle cx="40" cy="500" r="2.4" fill="url(#dewG)"/>
+    <circle cx="555" cy="620" r="1.5" fill="url(#dewG)"/>
+    <circle cx="70" cy="700" r="1.8" fill="url(#dewG)"/>
+    <circle cx="510" cy="770" r="1.2" fill="url(#dewG)"/>
+    <circle cx="100" cy="780" r="1.5" fill="url(#dewG)"/>
+    <circle cx="450" cy="150" r="1.0" fill="url(#dewG)"/>
+    <circle cx="160" cy="60" r="1.4" fill="url(#dewG)"/>
+    <circle cx="380" cy="50" r="1.0" fill="url(#dewG)"/>
+    <circle cx="30" cy="400" r="1.6" fill="url(#dewG)"/>
+    <circle cx="565" cy="350" r="1.2" fill="url(#dewG)"/>
+    <circle cx="35" cy="200" r="1.0" fill="url(#dewG)"/>
+  </svg>
+
+  <!-- 氷の破片（シャンパンゴールド幾何ライン） -->
+  <svg class="ice-shards" viewBox="0 0 595 842" preserveAspectRatio="none">
+    <defs>
+      <linearGradient id="goldL" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#d4b87a" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#d4b87a" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#d4b87a" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="cyanL" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#2dd4bf" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <!-- 装飾の細ライン -->
+    <line x1="40" y1="180" x2="160" y2="160" stroke="url(#goldL)" stroke-width="0.6"/>
+    <line x1="440" y1="170" x2="555" y2="190" stroke="url(#cyanL)" stroke-width="0.6"/>
+    <line x1="50" y1="555" x2="180" y2="540" stroke="url(#cyanL)" stroke-width="0.6"/>
+    <line x1="430" y1="560" x2="555" y2="575" stroke="url(#goldL)" stroke-width="0.6"/>
+    <!-- 細い氷柱 -->
+    <polygon points="20,400 27,400 23,440" fill="#d4b87a" opacity="0.25"/>
+    <polygon points="575,300 582,300 578,340" fill="#2dd4bf" opacity="0.2"/>
+    <polygon points="15,650 22,650 18,690" fill="#d4b87a" opacity="0.2"/>
+    <polygon points="572,700 578,700 575,735" fill="#2dd4bf" opacity="0.18"/>
+  </svg>
+
+  <!-- 背景の大書「涼」 -->
+  <div class="kanji-bg">涼</div>
+
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="content">
+
+    <div class="top-label">
+      <div class="en">M I D N I G H T &nbsp; C H I L L</div>
+      <div class="accent-line"></div>
+      <div class="jp">夏 季 限 定 ／ 真 夏 の 夜 の 涼</div>
+    </div>
+
+    <div class="hero">
+      <p class="lead">微 細 な 氷 で キ ン と 冷 や し た</p>
+      <h1>さっぱり<span class="accent">冷麺</span></h1>
+      <h2>COLD NOODLE</h2>
+    </div>
+
+    <div class="photo-wrap">
+      <div class="photo-circle">
+        <img src="../images/reimen.webp" alt="冷麺">
+      </div>
+      <span class="shard shard-1"></span>
+      <span class="shard shard-2"></span>
+      <span class="shard shard-3"></span>
+      <span class="shard shard-4"></span>
+    </div>
+
+    <div class="caption">
+      <p>
+        つるりと喉に抜けるしこしこ麺。<br>
+        <strong>キ ム チ</strong>と<strong>き ゅ う り</strong>を添え、<br>
+        夏 に ぴ っ た り の 一 杯。
+      </p>
+    </div>
+
+    <div class="price-bar">
+      <span class="line"></span>
+      <span class="price">¥ 900<span class="tax">（税込）</span></span>
+      <span class="line"></span>
+    </div>
+
+    <div class="bottom-info">
+      <div class="availability">L u n c h ／ D i n n e r &nbsp;・&nbsp; 両 時 間 帯 で ご 注 文 い た だ け ま す</div>
+      <div class="gold-divider"></div>
+      <div class="brand">焼 肉 和 火 焼 ・ わ び や</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
